@@ -8,6 +8,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.cm as mcm
 
+
+# hello
 '''
 So this "metric" was motivated by some of the readings that clustered COI's and then the preservations
 of these clusters in a given plan was determined by a "T threshold number"
