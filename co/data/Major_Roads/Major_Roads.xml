@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <title>Major Roads</title>
+                <onlink>https://dtdapps.coloradodot.info/arcgis/rest/services/MapView/BaseLayers_MapView_ext/MapServer/17</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>DescriptionPolyline (linear) geographic features representing public roads under local jurisdiction that are functionally classified as arterials or collectors.&amp;nbsp;Last Update2024Update FrequencyAs neededData OwnerDivision of Transportation DevelopmentData ContactGIS Support UnitCollection Method&amp;nbsp;ProjectionNAD83 / UTM zone 13NCoverage AreaStatewideTemporal&amp;nbsp;Disclaimer/LimitationsThere are no restrictions and legal prerequisites for using the data set. The State of Colorado assumes no liability relating to the completeness, correctness, or fitness for use of this data.</abstract>
+            <purpose>Polyline (linear) geographic features representing public roads under local jurisdiction that are functionally classified as arterials or collectors. </purpose>
+        </descript>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>roads</themekey>
+                <themekey>major</themekey>
+                <themekey>cdot</themekey>
+                <themekey>transportation</themekey>
+                <themekey>infrastructure</themekey>
+                <themekey>FIPS</themekey>
+                <themekey>segment</themekey>
+                <themekey>route</themekey>
+                <themekey>AADT</themekey>
+                <themekey>county</themekey>
+                <themekey>surface</themekey>
+                <themekey>Authoritative</themekey>
+                <themekey>Public</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>Creative Commons LicenseThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 Generic License.</useconst>
+    </idinfo>
+    <metainfo>
+        <metd>20190103</metd>
+        <metc>
+            <cntinfo>
+                <!--no contact person or organization name available-->
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
