@@ -97,7 +97,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -170,7 +171,8 @@
           "080310030052"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -269,7 +271,8 @@
           "080310016033"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -2614,7 +2617,8 @@
           "080130125011023"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "University"
       }
     },
     {
@@ -2725,7 +2729,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -2806,7 +2811,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -3118,7 +3124,8 @@
           "080310002023"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -3463,7 +3470,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "University"
       }
     },
     {
@@ -3747,7 +3755,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -4043,7 +4052,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "NIMBY"
       }
     },
     {
@@ -4233,7 +4243,8 @@
           "080410043001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -4385,7 +4396,8 @@
         "population": 1240,
         "block_group_ids": ["080410045073"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -4610,7 +4622,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -4752,7 +4765,8 @@
         "population": 1457,
         "block_group_ids": ["080410079001"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -4802,7 +4816,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -4915,7 +4930,8 @@
         "population": 4441,
         "block_group_ids": ["080410045183", "080410045181"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -5313,7 +5329,8 @@
           "080319802001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -5513,7 +5530,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -5576,7 +5594,8 @@
           "080310044031"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -5723,7 +5742,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -5920,7 +5940,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Poverty"
       }
     },
     {
@@ -6059,7 +6080,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -6124,7 +6146,8 @@
           "080010078012"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -6314,7 +6337,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Agriculture"
       }
     },
     {
@@ -6486,7 +6510,8 @@
           "080310156002024"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -6577,8 +6602,8 @@
         "entry_name": "Baker neighborhood",
         "cultural_interests": "i think the progressive creative community, not wealthy but still sometimes gentrifiers, in south-central Denver has integrity; Baker has lost its Latino majority over the last 20 years, but there is still a sense of Latino history and some remembrance of the traditional Westside; Baker became an important LGBTQ enclave in the 80s and 90s; while that community integrates with society much better now, this heritage is still reflected among the residents and businesses in the area",
         "economic_interests": "our community is cut off from the Platte River by the highway, the railroad and by the historical expulsion of residents from the west side of Baker in favor of industrial uses; one of the primary economic issues is that rising property values and rents are displacing long-term residents",
-        "comm_activities": "my neighborhood is nominally Baker, but is really the residential core of the statistical neighborhood; south of Alameda is not connected; Broadway is another focus for my community — residents on both sides have a common interest for the vitality and to some extent against the over-commercialization of Broadway",
-        "other_considerations": "this is a part of the city where a lot of people know each other, and help each other out; crime often comes from people from other neighborhoods seeking \"easy prey\"; there is a significant unsheltered homeless population in the area, and they are not mostly the ones forming group campsites — they are often solitary, sleeping in alleys, river banks or in vehicles",
+        "comm_activities": "my neighborhood is nominally Baker, but is really the residential core of the statistical neighborhood; south of Alameda is not connected; Broadway is another focus for my community \u2014 residents on both sides have a common interest for the vitality and to some extent against the over-commercialization of Broadway",
+        "other_considerations": "this is a part of the city where a lot of people know each other, and help each other out; crime often comes from people from other neighborhoods seeking \"easy prey\"; there is a significant unsheltered homeless population in the area, and they are not mostly the ones forming group campsites \u2014 they are often solitary, sleeping in alleys, river banks or in vehicles",
         "custom_response": "",
         "population": null,
         "census_block_ids": [
@@ -6688,7 +6713,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -6886,7 +6912,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -7051,7 +7078,8 @@
           "080310006004"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -7472,7 +7500,8 @@
           "080410013012"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -7690,7 +7719,8 @@
         "population": 1783,
         "block_group_ids": ["080930004001"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -7810,7 +7840,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -8076,7 +8107,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -8902,7 +8934,8 @@
           "080350141312"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -9458,7 +9491,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -9526,7 +9560,8 @@
         "population": 5966,
         "block_group_ids": ["080010091041", "080010091042"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -9567,7 +9602,7 @@
       "properties": {
         "entry_ID": "77e7f3f1-0f4f-4e53-ae68-64483c05c4c3",
         "entry_name": "Hunters Glen Community",
-        "cultural_interests": "My community is basically on the edge of Thornton we lie pretty close to Westminster. Unfortunately, there really isn’t any historic background back in the 00's there really wasn’t anything in that area besides plain fields. The community is very diverse with religious and ethnic groups.",
+        "cultural_interests": "My community is basically on the edge of Thornton we lie pretty close to Westminster. Unfortunately, there really isn\u2019t any historic background back in the 00's there really wasn\u2019t anything in that area besides plain fields. The community is very diverse with religious and ethnic groups.",
         "economic_interests": "Since the community is growing really fast with vast number of attractions like not too far lies top golf, the summit, the orchard mall, more grocery stores, the Denver Premium Outlets are planning on expanding, In-N-Out burger, and the list goes on. Which means the community is impacted by rising costs of living, and that threatens to push many residents out or make dwelling here more economical challenging.",
         "comm_activities": "My community is centered around Hunters Glen Park/Lake, which serves as an important communal resource. It is the location of community garage sales, fishing contests, and community breakfast gatherings. it also consists of basketball courts, tennis courts, swimming pool, playgrounds, and a volleyball court. Century Middle School, Hunters Glen Elementary School, and a small part of Mountain Range High School are in my community as well. The city's upkeep and development of which affects the area. We also have The Denver Premium Outlets within the community for any shopping needs.",
         "other_considerations": "Besides the cost of living, I am not sure what my community concerns are.",
@@ -9582,7 +9617,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -9717,7 +9753,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Elderly"
       }
     },
     {
@@ -9772,7 +9809,8 @@
         "population": 892,
         "block_group_ids": ["080310040033"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "University"
       }
     },
     {
@@ -9890,7 +9928,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -10255,7 +10294,7 @@
       },
       "properties": {
         "entry_ID": "b6f63a9a-f783-4f91-9a45-1d0571598727",
-        "entry_name": "Sloan’s Lane",
+        "entry_name": "Sloan\u2019s Lane",
         "cultural_interests": "",
         "economic_interests": "",
         "comm_activities": "",
@@ -10855,7 +10894,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -11640,7 +11680,8 @@
           "080679711002"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -11993,7 +12034,8 @@
           "080679707032"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -12252,7 +12294,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "NIMBY"
       }
     },
     {
@@ -13026,7 +13069,8 @@
           "080410063022"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -13852,7 +13896,8 @@
           "080150001003"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -14215,7 +14260,8 @@
           "080410013021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -14450,7 +14496,8 @@
           "080310042015"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -14674,7 +14721,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -14865,9 +14913,9 @@
       "properties": {
         "entry_ID": "675a7e6e-2584-43a2-9435-a51148c7cd73",
         "entry_name": "NE Denver Diverse SJWs",
-        "cultural_interests": "We host the old Denver Tramway barn - now offices for a lot of non-profits. Cole has historically housed those of modest means from all races and ethnicities, but it’s in danger of gentrifying and losing that character.",
-        "economic_interests": "The north part of Cole is affected by the superfund in Swansea. Occasionally, we smell Suncor or Purina having a bad day. We’ve had to survive construction of the A Line, 39th Ave Greenway flood control, and central I-70",
-        "comm_activities": "The Roman Catholics in Cole Neighborhood - many Latino/a/x - go to Annunciation Church. We’re close to both 30th & Downing station and 38th & Blake station, though neither are in our neighborhood proper. The 43 bus on MLK is pretty frequent and well-used.",
+        "cultural_interests": "We host the old Denver Tramway barn - now offices for a lot of non-profits. Cole has historically housed those of modest means from all races and ethnicities, but it\u2019s in danger of gentrifying and losing that character.",
+        "economic_interests": "The north part of Cole is affected by the superfund in Swansea. Occasionally, we smell Suncor or Purina having a bad day. We\u2019ve had to survive construction of the A Line, 39th Ave Greenway flood control, and central I-70",
+        "comm_activities": "The Roman Catholics in Cole Neighborhood - many Latino/a/x - go to Annunciation Church. We\u2019re close to both 30th & Downing station and 38th & Blake station, though neither are in our neighborhood proper. The 43 bus on MLK is pretty frequent and well-used.",
         "other_considerations": "",
         "custom_response": "",
         "population": 64179,
@@ -14934,7 +14982,8 @@
           "080310042021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -15844,7 +15893,8 @@
           "080410039114"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -15908,7 +15958,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Cities"
       }
     },
     {
@@ -16012,7 +16063,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -16149,7 +16201,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -17514,7 +17567,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -17816,7 +17870,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -18098,7 +18153,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -18236,7 +18292,8 @@
           "080410037053"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -18430,7 +18487,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Recreation and Tourism"
       }
     },
     {
@@ -19011,7 +19069,8 @@
           "081170001021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -19209,7 +19268,8 @@
         "population": 20753,
         "block_group_ids": ["080410051041", "080410051061", "080410051071"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -19730,7 +19790,8 @@
           "080590098544"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -19930,7 +19991,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -20000,7 +20062,8 @@
         "population": 1235,
         "block_group_ids": ["080410013021"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -20064,7 +20127,7 @@
         "cultural_interests": "",
         "economic_interests": "",
         "comm_activities": "",
-        "other_considerations": "As Denver continues to grow, it’s important that my community is able to foster more local businesses in the immediate area so there is less reliance on cars.",
+        "other_considerations": "As Denver continues to grow, it\u2019s important that my community is able to foster more local businesses in the immediate area so there is less reliance on cars.",
         "custom_response": "",
         "population": null,
         "block_group_ids": [
@@ -20077,7 +20140,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -20323,7 +20387,8 @@
           "080410045183"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -20444,7 +20509,8 @@
           "080319801001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -20503,7 +20569,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -20724,7 +20791,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -21877,7 +21945,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -22052,7 +22121,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -22207,7 +22277,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -22297,7 +22368,8 @@
           "080310023002"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -22411,7 +22483,8 @@
           "080310027063"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -22493,7 +22566,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -22916,7 +22990,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -23034,7 +23109,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -23174,7 +23250,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cities"
       }
     },
     {
@@ -23289,7 +23366,8 @@
           "080310044061"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -23556,7 +23634,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -23727,7 +23806,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Infrastructure"
       }
     },
     {
@@ -23848,7 +23928,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -24022,7 +24103,8 @@
         "population": null,
         "block_group_ids": [""],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -24983,7 +25065,8 @@
         "population": null,
         "block_group_ids": [""],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -25149,7 +25232,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -26098,7 +26182,8 @@
         "population": null,
         "block_group_ids": [""],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -26215,7 +26300,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -26276,7 +26362,7 @@
         "entry_name": "Lowry",
         "cultural_interests": "",
         "economic_interests": "My community believes that keeping our neighborhood an inviting place to live is essential to maintaining our quality of life.  We need to balance increasing housing with not increasing population density to the point it wrecks Neighborhood character",
-        "comm_activities": "My community is made up of people who have moved to Lowry for its great location, great local businesses and it’s quality of life.  We have great parks, libraries and open space. It’s a great place for people from singles to young families to retirees.",
+        "comm_activities": "My community is made up of people who have moved to Lowry for its great location, great local businesses and it\u2019s quality of life.  We have great parks, libraries and open space. It\u2019s a great place for people from singles to young families to retirees.",
         "other_considerations": "We need to come up with long term solutions to homelessness, combat the raising crime rate and keep Denver a great place to live.",
         "custom_response": "",
         "population": null,
@@ -26291,7 +26377,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -26397,7 +26484,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -26441,7 +26529,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -26710,7 +26799,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -26896,7 +26986,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -26934,7 +27025,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -27231,7 +27323,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -27438,7 +27531,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -27559,7 +27653,8 @@
           "080310031022"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -27860,7 +27955,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -28657,7 +28753,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -28729,7 +28826,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -29074,7 +29172,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -29191,7 +29290,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -29378,7 +29478,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Violence"
       }
     },
     {
@@ -29617,7 +29718,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -30172,7 +30274,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -30278,7 +30381,8 @@
         "author_name": "",
         "address": "",
         "organization": "GeoCivics Training 5/28",
-        "drive": "GeoCivics Training - Sample Community"
+        "drive": "GeoCivics Training - Sample Community",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -30358,7 +30462,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -30522,7 +30627,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -30724,7 +30830,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cities"
       }
     },
     {
@@ -30878,7 +30985,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -31091,7 +31199,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -31213,7 +31322,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -31316,7 +31426,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -31488,7 +31599,8 @@
           "080310083881"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -31520,7 +31632,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -31682,7 +31795,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -31755,7 +31869,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -31805,7 +31920,8 @@
         "population": null,
         "block_group_ids": ["080050804001"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -31869,7 +31985,7 @@
         "entry_name": "Marston Lake",
         "cultural_interests": "",
         "economic_interests": "",
-        "comm_activities": "Living off Quincy and Wads. My community is all Jeffco related. All the parks we visit are Jeffco parks. All the family activities we participate in are Jeffco. All the libraries we visit are in Jeffco. We have no real tie to The city and county of Denver other than some taxes getting paid. For instance, this survey. I had to remind myself that I am able to fill this out because, technically, I live in Denver. Don’t get me wrong, I LOVe Denver! Born and raised in Fort Collins, Denver was (and still is) my absolutely place to visit.",
+        "comm_activities": "Living off Quincy and Wads. My community is all Jeffco related. All the parks we visit are Jeffco parks. All the family activities we participate in are Jeffco. All the libraries we visit are in Jeffco. We have no real tie to The city and county of Denver other than some taxes getting paid. For instance, this survey. I had to remind myself that I am able to fill this out because, technically, I live in Denver. Don\u2019t get me wrong, I LOVe Denver! Born and raised in Fort Collins, Denver was (and still is) my absolutely place to visit.",
         "other_considerations": "",
         "custom_response": "",
         "population": null,
@@ -31877,7 +31993,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -32481,7 +32598,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -32913,7 +33031,8 @@
           "080410045174"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -33062,7 +33181,8 @@
         "population": null,
         "block_group_ids": ["080410044022", "080410044052", "080410044061"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -33155,7 +33275,8 @@
         "population": null,
         "block_group_ids": ["080410045162"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -33234,7 +33355,8 @@
         "population": null,
         "block_group_ids": ["080410044042"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -33496,7 +33618,8 @@
           "080310016022000"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -33563,7 +33686,8 @@
         "population": null,
         "block_group_ids": ["080410051153"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -33699,7 +33823,8 @@
           "080410044041"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -33941,7 +34066,8 @@
           "080410045162"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -34113,7 +34239,8 @@
           "080310042014"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -34343,7 +34470,8 @@
           "080410043004"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -34516,7 +34644,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Economy and Commerce"
       }
     },
     {
@@ -34613,7 +34742,8 @@
         "population": null,
         "block_group_ids": ["080410045141", "080050071014"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Religion"
       }
     },
     {
@@ -34692,7 +34822,8 @@
         "population": null,
         "block_group_ids": ["080410044042"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -34889,7 +35020,8 @@
           "080310043081"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -35057,7 +35189,8 @@
           "080410044031"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -35247,7 +35380,8 @@
         "author_name": "",
         "address": "",
         "organization": "GeoCivics Training 5/28",
-        "drive": "GeoCivics Training - Sample Community"
+        "drive": "GeoCivics Training - Sample Community",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -35375,7 +35509,8 @@
         "population": null,
         "block_group_ids": ["080410044031"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -35454,7 +35589,8 @@
         "population": null,
         "block_group_ids": ["080410044042"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -35532,7 +35668,8 @@
         "population": null,
         "block_group_ids": ["080410044061"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -35644,7 +35781,8 @@
         "population": null,
         "census_block_ids": ["080410045174000"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -35723,7 +35861,8 @@
         "population": null,
         "block_group_ids": ["080410045142"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -36439,7 +36578,7 @@
         "cultural_interests": "Neighborhood slowly becoming more mixed. Mostly white professionals live here. There is a high percentage of residents who have returned to live here where they grew up.",
         "economic_interests": "We are located near Lowry and Cherry Creek shopping districts where there are also art galleries, bike paths, and lots of great restaurants. People are very friendly and open.",
         "comm_activities": "parks, shopping, grocery store, restaurants, bike paths, places of worship, healthcare services, public transportation, libraries, recreation.",
-        "other_considerations": "There seems to be a movement to dismiss those of us who are more moderate to conservative. The city has not listened to our concerns about such things as crime, high speed cut through traffic, the city makes their plans, holds meetings to look like they are listening but then just go ahead and do what they want. Especially with the excessive building of apartments, ugly street “improvements” etc. we are not all bikers or public transport people! Stop building on every square inch of land.",
+        "other_considerations": "There seems to be a movement to dismiss those of us who are more moderate to conservative. The city has not listened to our concerns about such things as crime, high speed cut through traffic, the city makes their plans, holds meetings to look like they are listening but then just go ahead and do what they want. Especially with the excessive building of apartments, ugly street \u201cimprovements\u201d etc. we are not all bikers or public transport people! Stop building on every square inch of land.",
         "custom_response": "",
         "population": null,
         "census_block_ids": [
@@ -37108,7 +37247,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -37284,7 +37424,8 @@
         "population": null,
         "block_group_ids": ["080410045122", "080410045174", "080410044022"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -37673,7 +37814,8 @@
           "080410045152"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -37846,7 +37988,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -37880,7 +38023,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -38044,7 +38188,8 @@
         "author_name": "",
         "address": "",
         "organization": "GEOG 3742",
-        "drive": "GEOG 3742 Fall 2021 Session 1"
+        "drive": "GEOG 3742 Fall 2021 Session 1",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -38093,7 +38238,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -38169,7 +38315,8 @@
         "population": null,
         "block_group_ids": ["080410044041"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cities"
       }
     },
     {
@@ -38233,7 +38380,8 @@
         "population": null,
         "block_group_ids": ["080410042003"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -38338,7 +38486,8 @@
         "population": null,
         "census_block_ids": ["080410045162027"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -38456,7 +38605,8 @@
         "population": null,
         "block_group_ids": ["080410045191"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Religion"
       }
     },
     {
@@ -40958,7 +41108,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "NIMBY"
       }
     },
     {
@@ -41106,7 +41257,8 @@
         "population": null,
         "block_group_ids": ["080410045191", "080410045192"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -41348,7 +41500,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -41577,7 +41730,8 @@
           "080410045181"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -41685,7 +41839,8 @@
         "population": null,
         "block_group_ids": ["080410045162", "080179606002"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -41813,7 +41968,8 @@
         "author_name": "",
         "address": "",
         "organization": "anna test png",
-        "drive": "name"
+        "drive": "name",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -42165,7 +42321,8 @@
         "population": 1036,
         "block_group_ids": ["081070001001"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Recreation and Tourism"
       }
     },
     {
@@ -42265,7 +42422,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -42392,7 +42550,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -42519,7 +42678,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -43103,7 +43263,8 @@
           "080410045161"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -43220,9 +43381,9 @@
       "properties": {
         "entry_ID": "51fb9eed-27fe-4978-9e5b-15583cbf0ce9",
         "entry_name": "East Colfax neighborhood",
-        "cultural_interests": "We are one of the most culturally diverse communities in the City of Denver with a wide\r\nrange of nationalities and languages represented in the neighborhood.\r\n● Being a truly multilingual and multicultural community is something that is unique to East\r\nColfax and therefore requires that our neighborhood be united into one Council District● Language access issues are of critical importance in East Colfax.",
-        "economic_interests": "East Colfax has a significant population (27%) that is living below the poverty line. This\r\nis significantly higher than other neighborhoods in Denver.\r\n● By splitting our neighborhood into Two City Council Districts with more power and\r\nprivilege with Central Park and Park Hill on the North (District 8) and Montclair, Lowry,\r\nand Hilltop on the South (District 5), we are putting an already disadvantaged community\r\nin competition with neighborhoods with extremely different interests and needs.\r\n● This is setting East Colfax up for failure. The City should be investing in giving East\r\nColfax all the support it needs to be a unified voice advocating for the resources we need",
-        "comm_activities": "● Our Community is lacking in critical services most neighborhoods in Denver have such\r\nas a Public Library, Recreation Centers, and Early Childhood Education providers.\r\n● This requires specific attention and focus to bring East Colfax out of 78 out of 78 on the\r\nEquity Index of Denver.",
+        "cultural_interests": "We are one of the most culturally diverse communities in the City of Denver with a wide\r\nrange of nationalities and languages represented in the neighborhood.\r\n\u25cf Being a truly multilingual and multicultural community is something that is unique to East\r\nColfax and therefore requires that our neighborhood be united into one Council District\u25cf Language access issues are of critical importance in East Colfax.",
+        "economic_interests": "East Colfax has a significant population (27%) that is living below the poverty line. This\r\nis significantly higher than other neighborhoods in Denver.\r\n\u25cf By splitting our neighborhood into Two City Council Districts with more power and\r\nprivilege with Central Park and Park Hill on the North (District 8) and Montclair, Lowry,\r\nand Hilltop on the South (District 5), we are putting an already disadvantaged community\r\nin competition with neighborhoods with extremely different interests and needs.\r\n\u25cf This is setting East Colfax up for failure. The City should be investing in giving East\r\nColfax all the support it needs to be a unified voice advocating for the resources we need",
+        "comm_activities": "\u25cf Our Community is lacking in critical services most neighborhoods in Denver have such\r\nas a Public Library, Recreation Centers, and Early Childhood Education providers.\r\n\u25cf This requires specific attention and focus to bring East Colfax out of 78 out of 78 on the\r\nEquity Index of Denver.",
         "other_considerations": "East Colfax 78 out of 78 on the Equity Scale in the City of Denver and therefore East\r\nColfax needs to be united into one City Council District as the issues facing our\r\nneighborhood require specific leadership and advocacy,",
         "custom_response": "",
         "population": 20134,
@@ -43247,7 +43408,8 @@
           "080310042023"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -43311,7 +43473,8 @@
         "population": null,
         "block_group_ids": [""],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -43628,7 +43791,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -43954,7 +44118,8 @@
         "population": 3218,
         "block_group_ids": ["081010036001", "081010030042"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -44082,7 +44247,8 @@
         "population": null,
         "block_group_ids": ["080410044031"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -44611,7 +44777,8 @@
           "080410080002"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -44739,7 +44906,8 @@
         "population": null,
         "block_group_ids": ["080410044031"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -44945,7 +45113,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -45532,7 +45701,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Infrastructure"
       }
     },
     {
@@ -45726,7 +45896,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "University"
       }
     },
     {
@@ -46145,7 +46316,8 @@
         "population": 2600,
         "block_group_ids": ["080410033062"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -46219,7 +46391,8 @@
           "080310034022"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -46338,7 +46511,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spaces of Political Geography 2021",
-        "drive": "GES 3300 2021"
+        "drive": "GES 3300 2021",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -46915,7 +47089,8 @@
         "author_name": "",
         "address": "",
         "organization": "GeoCivics Training 5/28",
-        "drive": "GeoCivics Training - Sample Community"
+        "drive": "GeoCivics Training - Sample Community",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -47009,7 +47184,8 @@
         "population": null,
         "block_group_ids": ["080410044052"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -47129,7 +47305,8 @@
         "population": null,
         "block_group_ids": ["080410045174"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Religion"
       }
     },
     {
@@ -47235,7 +47412,8 @@
         "population": null,
         "block_group_ids": ["080410044022"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -47311,7 +47489,8 @@
         "population": null,
         "block_group_ids": ["080410045162"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -47472,7 +47651,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -47700,7 +47880,8 @@
           "080310030041"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -48820,7 +49001,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -48941,7 +49123,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -49159,7 +49342,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -49250,7 +49434,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -49303,7 +49488,8 @@
         "population": 4396,
         "block_group_ids": ["080410023001", "080410016001", "080410016002"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cities"
       }
     },
     {
@@ -49366,7 +49552,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -49667,7 +49854,8 @@
           "080410002023"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -49777,7 +49965,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -50169,7 +50358,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -50565,7 +50755,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -50683,7 +50874,8 @@
           "080410072032"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -51119,7 +51311,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "University"
       }
     },
     {
@@ -51554,7 +51747,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -51665,7 +51859,7 @@
         "entry_ID": "50701018-a5a5-4bfa-9f01-2ce14b7fa061",
         "entry_name": "Washington Park",
         "cultural_interests": "",
-        "economic_interests": "My community is near a beautiful park. It’s an icon to the area and encourages a lot of outdoor activities all year round.",
+        "economic_interests": "My community is near a beautiful park. It\u2019s an icon to the area and encourages a lot of outdoor activities all year round.",
         "comm_activities": "",
         "other_considerations": "Traffic is starting to affect the community as the city grows. We need to think ahead and plan transportation routes that encourage growth as well as hospitality. They clearly need to encourage sustainable methods as well.",
         "custom_response": "",
@@ -51763,7 +51957,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Recreation and Tourism"
       }
     },
     {
@@ -51835,7 +52030,8 @@
           "080310003012"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -51984,7 +52180,8 @@
           "080310041093"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -52028,7 +52225,8 @@
         "population": null,
         "block_group_ids": ["080310027052"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -52088,7 +52286,8 @@
           "080099647002"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -52201,7 +52400,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -52308,7 +52508,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -52497,7 +52698,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -52537,7 +52739,8 @@
         "population": null,
         "block_group_ids": ["080310021022"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -52663,7 +52866,8 @@
           "080050055513"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -52751,7 +52955,7 @@
       "properties": {
         "entry_ID": "717e8200-5b11-49d5-b9c0-b6dbf15b261d",
         "entry_name": "Lowry",
-        "cultural_interests": "There are many age, ethnic and socio-economic groups in our community which makes this an ideal place to live and encourage people to interact with “the other”.  Lowry is a great place to encourage and develop community services that serve a widely diverse community.",
+        "cultural_interests": "There are many age, ethnic and socio-economic groups in our community which makes this an ideal place to live and encourage people to interact with \u201cthe other\u201d.  Lowry is a great place to encourage and develop community services that serve a widely diverse community.",
         "economic_interests": "",
         "comm_activities": "My community is a mixture of housing opportunities, from custom single family homes to low income housing.  The community needs easily accessible transportation,  shopping, recreational activities, high quality education and the ability to work well with our diverse group.",
         "other_considerations": "Although Lowry is a large and diverse area, it is important to keep the community together so that we can all learn from one another and develop ways to work and live in a multi cultural way.",
@@ -52772,7 +52976,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -52954,7 +53159,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -53232,10 +53438,10 @@
       "properties": {
         "entry_ID": "2e55f4a2-92cc-4316-a839-d32dfe31631d",
         "entry_name": "Mayfair",
-        "cultural_interests": "My community has a colorful history defined by the establishments on and around E Colfax. It is a melting pot of Cultural’s. I love the variety of ethnic cuisine available.",
+        "cultural_interests": "My community has a colorful history defined by the establishments on and around E Colfax. It is a melting pot of Cultural\u2019s. I love the variety of ethnic cuisine available.",
         "economic_interests": "Keeping neighborhoods and parks litter free and cleaning up colfax to be more of a sought after destination",
         "comm_activities": "My community is made up of the people who I meet while walking in Mayfair, Bellevue, South Park hill and crestmoor. It is the families at Palmer elementary school and hill middle school. It is the people at see at establishments I frequent in Mayfair town center, the elm district and 9+Co. It is my neighborhood parks of Lindsley and Mayfair.",
-        "other_considerations": "My community doesn’t have an interstate in it so good, clean, safe transit on the colfax and Colorado corridors is a need but a space challenges",
+        "other_considerations": "My community doesn\u2019t have an interstate in it so good, clean, safe transit on the colfax and Colorado corridors is a need but a space challenges",
         "custom_response": "",
         "population": 0,
         "census_block_ids": [
@@ -53883,7 +54089,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -54151,7 +54358,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -54245,7 +54453,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -54384,7 +54593,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -54535,7 +54745,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Elderly"
       }
     },
     {
@@ -55077,7 +55288,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -55272,7 +55484,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -55414,7 +55627,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -55722,7 +55936,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -55766,7 +55981,8 @@
         "population": 1672,
         "block_group_ids": ["080310016031"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -55874,7 +56090,8 @@
         "population": 4201,
         "block_group_ids": ["080310068163", "080310068161", "080310068151"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -55918,7 +56135,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -56022,7 +56240,8 @@
           "080310083881"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Policing"
       }
     },
     {
@@ -56082,7 +56301,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -56191,7 +56411,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Elderly"
       }
     },
     {
@@ -56260,7 +56481,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -56302,7 +56524,8 @@
         "population": 1336,
         "block_group_ids": ["080310017054"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -56476,7 +56699,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -56873,7 +57097,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "University"
       }
     },
     {
@@ -59005,7 +59230,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -59131,7 +59357,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spring 2024 Spaces of Political Geography",
-        "drive": "Communities and Communities of Interest"
+        "drive": "Communities and Communities of Interest",
+        "predicted_category": "Religion"
       }
     },
     {
@@ -59248,7 +59475,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -59409,7 +59637,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -59616,7 +59845,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -59801,7 +60031,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -59954,7 +60185,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -60152,7 +60384,8 @@
           "080410077001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -60286,7 +60519,8 @@
         "author_name": "",
         "address": "",
         "organization": "Spring 2024 Spaces of Political Geography",
-        "drive": "Communities and Communities of Interest"
+        "drive": "Communities and Communities of Interest",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -60478,7 +60712,8 @@
         "author_name": "",
         "address": "",
         "organization": "Political Geography 2022",
-        "drive": "Spaces of Political Geography 2022"
+        "drive": "Spaces of Political Geography 2022",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -60572,7 +60807,8 @@
         "population": 1720,
         "block_group_ids": ["080410051241"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -60773,7 +61009,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -60893,7 +61130,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -61242,7 +61480,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -61296,7 +61535,8 @@
           "080310041013"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Elderly"
       }
     },
     {
@@ -61542,7 +61782,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -61995,7 +62236,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -62199,7 +62441,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -62678,7 +62921,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -62893,7 +63137,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -63105,7 +63350,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -63368,7 +63614,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -63589,7 +63836,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -63848,7 +64096,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -63933,7 +64182,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -64401,7 +64651,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -64481,7 +64732,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -64603,7 +64855,8 @@
           "080310009034017"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -64765,7 +65018,8 @@
           "080310005013"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -64987,7 +65241,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -65203,7 +65458,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -65286,7 +65542,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -65422,7 +65679,8 @@
           "080410013024"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "University"
       }
     },
     {
@@ -65492,7 +65750,8 @@
           "080310044031"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -65532,7 +65791,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -65642,7 +65902,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "University"
       }
     },
     {
@@ -66116,7 +66377,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -66310,7 +66572,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -66438,7 +66701,8 @@
           "081230022071"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Elderly"
       }
     },
     {
@@ -67851,7 +68115,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -68012,7 +68277,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -68253,7 +68519,8 @@
         "author_name": "",
         "address": "",
         "organization": "CU Denver Intro to Urban Planning Fall 2021",
-        "drive": "Urban Planning - Fall 2021"
+        "drive": "Urban Planning - Fall 2021",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -68700,7 +68967,8 @@
         "population": 2169,
         "block_group_ids": ["080439783001"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -68770,7 +69038,8 @@
           "080310044031"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -68879,7 +69148,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -69758,7 +70028,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -70603,7 +70874,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -70733,7 +71005,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -71654,7 +71927,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -71736,7 +72010,8 @@
           "080010085351"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -71878,7 +72153,8 @@
           "080410063022"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Elderly"
       }
     },
     {
@@ -71997,7 +72273,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -72268,7 +72545,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -73538,7 +73816,8 @@
           "080319802001024"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -74831,7 +75110,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -74885,7 +75165,7 @@
       },
       "properties": {
         "entry_ID": "10cabfea-47b7-4be7-af94-2de7f0868985",
-        "entry_name": "Veteran’s Corner",
+        "entry_name": "Veteran\u2019s Corner",
         "cultural_interests": "",
         "economic_interests": "",
         "comm_activities": "",
@@ -74906,7 +75186,8 @@
           "080010087052005"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -74956,7 +75237,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -75051,7 +75333,8 @@
         "population": 1576,
         "block_group_ids": ["080590098335"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -75150,7 +75433,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -75401,7 +75685,8 @@
           "080410037131"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -75698,7 +75983,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -75900,7 +76186,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -75935,7 +76222,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -76099,7 +76387,8 @@
           "080410010001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -76449,7 +76738,8 @@
           "080410078021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -76729,7 +77019,8 @@
           "080410022003"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -76759,7 +77050,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -76971,7 +77263,8 @@
           "080310083881"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -77005,7 +77298,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -77071,7 +77365,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -77206,7 +77501,8 @@
           "080310158001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -79435,7 +79731,8 @@
           "081019801001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -79488,7 +79785,8 @@
         "population": 1023,
         "block_group_ids": ["080410009002"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -79686,7 +79984,8 @@
           "080410037053"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Suburbs"
       }
     },
     {
@@ -79846,7 +80145,8 @@
           "080410022001"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -80061,7 +80361,8 @@
           "080410051223"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -80180,7 +80481,8 @@
         "population": 4680,
         "block_group_ids": ["080410068021", "080410069021"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -80278,7 +80580,8 @@
           "080310027063"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     },
     {
@@ -80586,7 +80889,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "K-12 Education"
       }
     },
     {
@@ -80911,7 +81215,8 @@
           "080310017072"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -81350,7 +81655,7 @@
         "cultural_interests": "",
         "economic_interests": "",
         "comm_activities": "",
-        "other_considerations": "My community was established in the late 1960’s and is known as the forgotten community.  It has grown tremendously and extends to Pena Blvd on the West and Havana on the East. 56th Avenue North and Smith Road South. The Montbello district should include all addresses with 80239 zip code.  Montbello was built before GVR and Stapleton.  As a community we have worked well to advocate for infrastructure improvements and we desire not to split our district, but rather to expand it.",
+        "other_considerations": "My community was established in the late 1960\u2019s and is known as the forgotten community.  It has grown tremendously and extends to Pena Blvd on the West and Havana on the East. 56th Avenue North and Smith Road South. The Montbello district should include all addresses with 80239 zip code.  Montbello was built before GVR and Stapleton.  As a community we have worked well to advocate for infrastructure improvements and we desire not to split our district, but rather to expand it.",
         "custom_response": "",
         "population": 44517,
         "census_block_ids": [
@@ -81812,7 +82117,8 @@
           "080310041102003"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -82435,7 +82741,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -82628,7 +82935,8 @@
           "080399612044"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -82759,7 +83067,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Economy and Commerce"
       }
     },
     {
@@ -82943,7 +83252,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -82976,7 +83286,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -83039,7 +83350,8 @@
         "population": 1285,
         "block_group_ids": ["080310017072"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Vulnerable populations"
       }
     },
     {
@@ -84080,7 +84392,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -84354,7 +84667,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -84433,7 +84747,8 @@
           "080310046024"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Named neighborhood"
       }
     },
     {
@@ -84584,7 +84899,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -84793,7 +85109,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -85228,7 +85545,8 @@
         "population": 4119,
         "block_group_ids": ["080350141351", "080350142051"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -85349,7 +85667,8 @@
         "author_name": "",
         "address": "",
         "organization": "Colorado College Public Policymaking",
-        "drive": "Public Policymaking 2024"
+        "drive": "Public Policymaking 2024",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -85516,7 +85835,8 @@
         "author_name": "",
         "address": "",
         "organization": "Colorado College Public Policymaking",
-        "drive": "Public Policymaking 2024"
+        "drive": "Public Policymaking 2024",
+        "predicted_category": "Environment"
       }
     },
     {
@@ -85947,7 +86267,8 @@
         "author_name": "",
         "address": "",
         "organization": "Colorado College Public Policymaking",
-        "drive": "Public Policymaking 2024"
+        "drive": "Public Policymaking 2024",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -86042,7 +86363,8 @@
         "author_name": "",
         "address": "",
         "organization": "Denver City Council",
-        "drive": "Define Your Denver"
+        "drive": "Define Your Denver",
+        "predicted_category": "Culture"
       }
     },
     {
@@ -86459,7 +86781,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Recreation and Tourism"
       }
     },
     {
@@ -86981,7 +87304,8 @@
         "author_name": "",
         "address": "",
         "organization": "Commerce City, Colorado",
-        "drive": "C3gov"
+        "drive": "C3gov",
+        "predicted_category": "Family and Children"
       }
     },
     {
@@ -87370,7 +87694,8 @@
           "080010088021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -87436,7 +87761,8 @@
         "population": 1274,
         "block_group_ids": ["080590098342"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -87503,7 +87829,8 @@
           "080590098321003"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -87594,7 +87921,8 @@
           "080590098333"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -87672,7 +88000,8 @@
           "080590098343"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Diversity"
       }
     },
     {
@@ -87949,7 +88278,8 @@
           "080590098333"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "University"
       }
     },
     {
@@ -88058,7 +88388,8 @@
         "population": 3329,
         "block_group_ids": ["080590098342", "080590102093"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -88478,7 +88809,8 @@
           "080590098272"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Suburbs"
       }
     },
     {
@@ -88544,7 +88876,8 @@
         "population": 1274,
         "block_group_ids": ["080590098342"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Religion"
       }
     },
     {
@@ -88865,7 +89198,8 @@
           "080410078021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -88976,7 +89310,8 @@
         "population": 1683,
         "block_group_ids": ["080410045183"],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -89164,7 +89499,8 @@
           "080410045183"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Unknown"
       }
     },
     {
@@ -89834,7 +90170,8 @@
           "080410067013"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "University"
       }
     },
     {
@@ -90017,7 +90354,8 @@
           "080410039061"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Community engagement"
       }
     },
     {
@@ -90510,7 +90848,8 @@
           "080410078021"
         ],
         "author_name": "",
-        "address": ""
+        "address": "",
+        "predicted_category": "Cost of living"
       }
     }
   ]
