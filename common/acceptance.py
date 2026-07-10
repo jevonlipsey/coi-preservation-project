@@ -1,3 +1,4 @@
+from gerrychain.accept import always_accept
 import random
 
 optimized_accepted_track = []
@@ -40,3 +41,9 @@ def unoptimized_tcp(partition):
 
     unoptimized_accepted_track.append(accepted)
     return accepted
+
+STRATEGIES = {
+    'neutral': always_accept,
+    'optimized': optimized_tcp,
+    'unoptimized': unoptimized_tcp
+}
