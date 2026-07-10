@@ -269,7 +269,9 @@ def plot_detailed(
         clickmode="event+select",
     )
 
-    fig.show()
+    import os
+    if os.environ.get("PAPERMILL_RUN") != "True":
+        fig.show()
     return cois_enriched
 
 
