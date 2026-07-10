@@ -1,0 +1,2 @@
+step,weighted_tcp_score,unweighted_tcp_score,communities_split,sr_entropy,shannon_entropy,even_splits,cut_edges,dem_wins,dist_1_dem_share,dist_2_dem_share,dist_3_dem_share,dist_4_dem_share,dist_5_dem_share,dist_6_dem_share,dist_7_dem_share,dist_8_dem_share
+0,0.5363988354249638,0.5363988354249638,33,55.85429915384147,31.44069820503031,127.97412172392194,671,2,0.2529959420044807,0.2612687293467928,0.27789690461910904,0.31370842208749794,0.38180343075066725,0.480703584079538,0.5850259780889365,0.7606479074081023
