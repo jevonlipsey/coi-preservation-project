@@ -5,7 +5,7 @@ import papermill as pm
 
 ### init
 # run one or both
-TARGET_STATES = ["mo"]
+TARGET_STATES = ["co"]
 
 STATE_CONFIG = {
     "mo": {"notebook": "mo/mo_scoring.ipynb", "state_name": "missouri"},
@@ -16,19 +16,19 @@ experiments = [
     {
         "accept": "neutral",
         "weights": "test_weights",
-        "steps": 10,
+        "steps": 150_000,
         "desired_tcp": 0.56,
     },
     {
         "accept": "optimized",
         "weights": "test_weights",
-        "steps": 10,
+        "steps": 150_000,
         "desired_tcp": 0.56,
     },
     {
         "accept": "unoptimized",
         "weights": "test_weights",
-        "steps": 10,
+        "steps": 150_000,
         "desired_tcp": 0.56,
     },
 ]

@@ -134,7 +134,7 @@ def calculate_weighted_tcp(partition):
     community_scores = score_communities(raw_df)
     categories = community_scores["category"].unique()
     # get importance values for categories
-    weight_map = partition.graph.graph.graph.get('WEIGHT_MAP', {})
+    weight_map = partition.graph.graph.graph.get("WEIGHT_MAP", {})
     raw_weights = {cat: weight_map.get(cat, 1.0) for cat in categories}
     # normalize so they sum to 1
     total_raw_weight = sum(raw_weights.values())
@@ -242,3 +242,18 @@ def even_splits(partition):
         min_share = min_pop / total_pop
         es_score += splits * (1 - min_share)
     return es_score
+
+
+def effective_splits(partition):
+    """
+    (1 / Sum(shares^2)) - 1)
+    """
+    df = partition["raw_df"]
+    community_scores = score_communities(df)
+    community_scores["eff_splits"] = (1 / community_scores["sss_score"]) - 1
+    # population weighted average
+    weighted_sum = (
+        community_scores["eff_splits"] * community_scores["total_pop"]
+    ).sum()
+    total_pop = community_scores["total_pop"].sum()
+    return weighted_sum / total_pop
