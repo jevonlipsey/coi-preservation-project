@@ -134,7 +134,7 @@ def calculate_weighted_tcp(partition):
     community_scores = score_communities(raw_df)
     categories = community_scores["category"].unique()
     # get importance values for categories
-    weight_map = partition.graph.graph.get('WEIGHT_MAP', {})
+    weight_map = partition.graph.graph.graph.get('WEIGHT_MAP', {})
     raw_weights = {cat: weight_map.get(cat, 1.0) for cat in categories}
     # normalize so they sum to 1
     total_raw_weight = sum(raw_weights.values())

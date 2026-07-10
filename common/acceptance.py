@@ -9,18 +9,21 @@ def optimized_tcp(partition):
     global optimized_accepted_track
     current_score = partition["weighted_tcp_score"]
     previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    desired_tcp = partition.graph.graph.get("DESIRED_TCP", 0.5)
+    desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
+
     accepted = False
+    # floor
     if current_score >= desired_tcp:
         accepted = True
+    # favorably accept upward movement
     elif current_score > previous_score:
         accepted = random.random() < 0.8
-
+    # avoid getting stuck
+    else:
+        accepted = random.random() < 0.05
     # counter for acceptance
     optimized_accepted_track.append(accepted)
     return accepted
-
-    return False
 
 
 def unoptimized_tcp(partition):
@@ -33,11 +36,12 @@ def unoptimized_tcp(partition):
     # accept all terrible maps
     if current_score <= 0.40:
         accepted = True
-    # if score is getting worse accept
+    # favorably accept downward movement
     elif current_score < previous_score:
         accepted = random.random() < 0.8
+    # avoid getting stuck
     else:
-        accepted = random.random() < 0.1
+        accepted = random.random() < 0.05
 
     unoptimized_accepted_track.append(accepted)
     return accepted

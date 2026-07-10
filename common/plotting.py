@@ -120,9 +120,22 @@ def plot_detailed(
     else:
         tcp_score = 0.0
 
+    # keep only cols needed for plotting
+    coi_plot_cols = [cluster_col, "sss_score", "total_pop", "geometry"]
+    if "community_id" in cois_enriched.columns and "community_id" != cluster_col:
+        coi_plot_cols.append("community_id")
+    cois_for_json = cois_enriched[
+        [c for c in coi_plot_cols if c in cois_enriched.columns]
+    ].copy()
+
+    district_plot_cols = [district_col, dem_vote_col, tot_vote_col, "dem_share", "geometry"]
+    districts_for_json = districts_4326[
+        [c for c in district_plot_cols if c in districts_4326.columns]
+    ].copy()
+
     # convert to json for plotting
-    cois_geojson = json.loads(cois_enriched.to_json())
-    districts_geojson = json.loads(districts_4326.to_json())
+    cois_geojson = json.loads(cois_for_json.to_json())
+    districts_geojson = json.loads(districts_for_json.to_json())
 
     fig = go.Figure()
 
@@ -132,7 +145,7 @@ def plot_detailed(
             geojson=cois_geojson,
             locations=cois_enriched.index,
             z=cois_enriched["sss_score"],
-            text=cois_enriched["cluster"],
+            text=cois_enriched[cluster_col],
             customdata=cois_enriched[["total_pop", "sss_score"]],
             colorscale="RdYlGn",
             zmin=0.0,
@@ -260,7 +273,9 @@ def plot_detailed(
     return cois_enriched
 
 
-def plot_partition_detailed(partition, vtds_gdf, cois_gdf, title="Partition Map"):
+def plot_partition_detailed(
+    partition, vtds_gdf, cois_gdf, title="Partition Map", cluster_col="cluster"
+):
     """
     wrapper that extracts data from a gerrychain partition, scores it,
     maps it to the vtds, and passes it to the interactive plotly map func.
@@ -279,6 +294,7 @@ def plot_partition_detailed(partition, vtds_gdf, cois_gdf, title="Partition Map"
         cois_gdf=cois_gdf,
         community_scores_df=community_scores,
         district_col=temp_col,
+        cluster_col=cluster_col,
         title=title,
     )
     # delete temp call
