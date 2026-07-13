@@ -14,22 +14,16 @@ STATE_CONFIG = {
 
 experiments = [
     {
-        "accept": "neutral",
-        "weights": "test_weights",
-        "steps": 150_000,
-        "desired_tcp": 0.56,
-    },
-    {
         "accept": "optimized",
         "weights": "test_weights",
-        "steps": 150_000,
-        "desired_tcp": 0.56,
+        "steps": 500_000,
+        "desired_tcp": 0.85,
     },
     {
         "accept": "unoptimized",
         "weights": "test_weights",
-        "steps": 150_000,
-        "desired_tcp": 0.56,
+        "steps": 500_000,
+        "desired_tcp": 0.85,
     },
 ]
 
@@ -88,4 +82,3 @@ if __name__ == "__main__":
     total = time.time() - t_start
     mins, secs = divmod(int(total), 60)
     print(f"\nall done in {mins}m {secs}s")
-
