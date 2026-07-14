@@ -14,15 +14,21 @@ STATE_CONFIG = {
 
 experiments = [
     {
+        "accept": "neutral",
+        "weights": "test_weights",
+        "steps": 200_000,
+        "desired_tcp": 0.85,
+    },
+    {
         "accept": "optimized",
         "weights": "test_weights",
-        "steps": 100,
+        "steps": 200_000,
         "desired_tcp": 0.85,
     },
     {
         "accept": "unoptimized",
         "weights": "test_weights",
-        "steps": 100,
+        "steps": 200_000,
         "desired_tcp": 0.85,
     },
 ]
