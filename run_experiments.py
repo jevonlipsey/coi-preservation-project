@@ -16,15 +16,27 @@ experiments = [
     {
         "accept": "optimized",
         "weights": "test_weights",
-        "steps": 500_000,
+        "steps": 10000,
         "desired_tcp": 0.85,
     },
     {
-        "accept": "unoptimized",
+        "accept": "optimized_cs",
         "weights": "test_weights",
-        "steps": 500_000,
+        "steps": 10000,
         "desired_tcp": 0.85,
     },
+    {
+        "accept": "optimized_se",
+        "weights": "test_weights",
+        "steps": 10000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "optimized_sr",
+        "weights": "test_weights",
+        "steps": 10000,
+        "desired_tcp": 0.85,
+    }
 ]
 
 
