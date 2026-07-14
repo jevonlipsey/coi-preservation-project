@@ -1,7 +1,8 @@
-# big ahh csvs
-.csv
-
-
+# Ignore CSVs and results
+*.csv
+*.CSV
+results/
+**/results/
 
 .DS_Store
 .localized
