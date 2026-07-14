@@ -58,12 +58,12 @@ def optimized_tcp(partition):
         else 0
     )
 
-    print(margin)
+    #print(margin)
     accepted = False
     if current_score > previous_score:
         accepted = True
     else:
-        if margin > 0.05:
+        if margin > 0.01:
             accepted = random.random() < 0.1
         else:
             accepted = random.random() < 0.4
