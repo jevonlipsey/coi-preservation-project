@@ -16,13 +16,13 @@ experiments = [
     {
         "accept": "optimized",
         "weights": "test_weights",
-        "steps": 500_000,
+        "steps": 100,
         "desired_tcp": 0.85,
     },
     {
         "accept": "unoptimized",
         "weights": "test_weights",
-        "steps": 500_000,
+        "steps": 100,
         "desired_tcp": 0.85,
     },
 ]
