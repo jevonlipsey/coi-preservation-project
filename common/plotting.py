@@ -478,3 +478,6 @@ def plot_partisan_shift(df, score_col="weighted_tcp_score", top_q=0.80, bottom_q
     ]
     ax.legend(handles=legend_elements, loc="upper left")
     plt.show()
+
+
+### new plots
