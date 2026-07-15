@@ -283,7 +283,7 @@ def plot_partition_detailed(
     maps it to the vtds, and passes it to the interactive plotly map func.
     """
     # extract data and score
-    df_part = partition["raw_df"]
+    df_part = scoring.extract_data(partition)
     community_scores = scoring.score_communities(df_part)
 
     # map to temp col
