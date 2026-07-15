@@ -9,3 +9,7 @@ nbformat
 papermill
 seaborn
 plotly
+transformers 
+spacy 
+torch
+torchvision
