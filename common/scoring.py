@@ -232,8 +232,14 @@ def even_splits(partition):
         .sum()
         .reset_index()
     )
+
+    #
     merged = pd.merge(district_splits, total_pops, on=["category", "community_id"])
     es_score = 0
+
+    # for each commnity in the merged dataframe we get the # of splits of each community (splits),
+    # the smallest population split for the community (min_pop), and the total population of the community (total_pop),
+    # to calculate the score for each community where we return the sum of thse scores for every community (es_score)
     for c_id in merged["community_id"].unique():
         muni_simp = merged[merged["community_id"] == c_id]
         splits = len(muni_simp)

@@ -14,27 +14,21 @@ STATE_CONFIG = {
 
 experiments = [
     {
-        "accept": "optimized",
+        "accept": "optimized_es",
         "weights": "test_weights",
-        "steps": 10000,
+        "steps": 300_000,
         "desired_tcp": 0.85,
     },
     {
-        "accept": "optimized_cs",
+        "accept": "optimized_er",
         "weights": "test_weights",
-        "steps": 10000,
+        "steps": 300_000,
         "desired_tcp": 0.85,
     },
-    {
-        "accept": "optimized_se",
-        "weights": "test_weights",
-        "steps": 10000,
-        "desired_tcp": 0.85,
-    },
-    {
+        {
         "accept": "optimized_sr",
         "weights": "test_weights",
-        "steps": 10000,
+        "steps": 300_000,
         "desired_tcp": 0.85,
     }
 ]
