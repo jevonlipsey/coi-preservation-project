@@ -5,6 +5,7 @@ import json
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 import plotly.graph_objects as go
+import seaborn as sns
 
 from common import scoring
 
@@ -128,7 +129,13 @@ def plot_detailed(
         [c for c in coi_plot_cols if c in cois_enriched.columns]
     ].copy()
 
-    district_plot_cols = [district_col, dem_vote_col, tot_vote_col, "dem_share", "geometry"]
+    district_plot_cols = [
+        district_col,
+        dem_vote_col,
+        tot_vote_col,
+        "dem_share",
+        "geometry",
+    ]
     districts_for_json = districts_4326[
         [c for c in district_plot_cols if c in districts_4326.columns]
     ].copy()
@@ -270,6 +277,7 @@ def plot_detailed(
     )
 
     import os
+
     if os.environ.get("PAPERMILL_RUN") != "True":
         fig.show()
     return cois_enriched
@@ -501,17 +509,23 @@ def plot_mix(
     df_b = _coerce_frame(csv_b)
 
     share_cols_a = [
-        col for col in df_a.columns if col.startswith(share_col_prefix) and col.endswith("_dem_share")
+        col
+        for col in df_a.columns
+        if col.startswith(share_col_prefix) and col.endswith("_dem_share")
     ]
     share_cols_b = [
-        col for col in df_b.columns if col.startswith(share_col_prefix) and col.endswith("_dem_share")
+        col
+        for col in df_b.columns
+        if col.startswith(share_col_prefix) and col.endswith("_dem_share")
     ]
 
     if not share_cols_a or not share_cols_b:
         raise ValueError("No district dem-share columns found in the provided data")
 
     if len(share_cols_a) != len(share_cols_b):
-        raise ValueError("The two inputs must contain the same number of district dem-share columns")
+        raise ValueError(
+            "The two inputs must contain the same number of district dem-share columns"
+        )
 
     data_a = [df_a[col].dropna() for col in share_cols_a]
     data_b = [df_b[col].dropna() for col in share_cols_b]
@@ -539,7 +553,9 @@ def plot_mix(
         medianprops=dict(color="black", linewidth=1.5),
     )
 
-    ax.axhline(0.5, color="red", linestyle="dashed", linewidth=2, label="50% Win Threshold")
+    ax.axhline(
+        0.5, color="red", linestyle="dashed", linewidth=2, label="50% Win Threshold"
+    )
     ax.set_xticks(range(1, len(share_cols_a) + 1))
     ax.set_xticklabels([f"Dist {i}" for i in range(1, len(share_cols_a) + 1)])
     ax.set_title(title, fontsize=16)
@@ -555,3 +571,115 @@ def plot_mix(
 
 
 ### new plots
+
+
+def plot_county_splits_distribution(
+    df, initial_splits=None, enacted_data=None, steps_str=""
+):
+    plt.figure(figsize=(8, 5))
+
+    min_splits = (
+        int(df["county_split_count"].min())
+        if not df["county_split_count"].isna().all()
+        else 0
+    )
+    max_splits = (
+        int(df["county_split_count"].max())
+        if not df["county_split_count"].isna().all()
+        else 0
+    )
+
+    if min_splits == max_splits:
+        bins = [min_splits - 0.5, min_splits + 0.5]
+        xticks = [min_splits]
+    else:
+        bins = np.arange(min_splits - 0.5, max_splits + 1.5, 1)
+        xticks = range(min_splits, max_splits + 1)
+
+    plt.hist(df["county_split_count"], bins=bins, alpha=0.7, edgecolor="black")
+
+    if initial_splits is not None:
+        plt.axvline(
+            x=initial_splits,
+            color="grey",
+            linestyle="dashed",
+            label=f"initial splits ({initial_splits})",
+        )
+
+    if enacted_data:
+        colors = ["blue", "red", "green", "purple"]
+        for i, (label, data) in enumerate(enacted_data.items()):
+            splits = data.get("county_splits")
+            if splits is not None:
+                plt.axvline(
+                    x=splits,
+                    color=colors[i % len(colors)],
+                    linestyle="dashed",
+                    linewidth=2,
+                    label=f"{label}: {splits}",
+                )
+
+    plt.xticks(xticks)
+    title = f"distribution of county splits" + (
+        f" over {steps_str} steps" if steps_str else ""
+    )
+    plt.title(title)
+    plt.xlabel("county splits")
+    plt.ylabel("frequency")
+    plt.legend()
+    plt.show()
+
+
+def plot_tcp_vs_county_splits(df, title="tcp vs county splits", steps_str=""):
+    if steps_str:
+        title += f" ({steps_str} steps)"
+    plt.figure(figsize=(9, 6))
+
+    sns.kdeplot(
+        data=df,
+        x="county_split_count",
+        y="weighted_tcp_score",
+        fill=True,
+        cmap="Blues",
+        alpha=0.8,
+        levels=10,
+    )
+    """
+    sns.scatterplot(
+        data=df,
+        x="county_split_count",
+        y="weighted_tcp_score",
+        color="black",
+        alpha=0.1,
+        s=15
+    )
+    """
+    plt.title(title, fontsize=15)
+    plt.xlabel("county splits", fontsize=12)
+    plt.ylabel("total coi preservation (tcp)", fontsize=12)
+    plt.grid(True, linestyle="--", alpha=0.5)
+    plt.show()
+
+
+def plot_court_metrics_distributions(df, steps_str=""):
+    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+
+    main_title = "court metrics distributions"
+    if steps_str:
+        main_title += f" over {steps_str} steps"
+    fig.suptitle(main_title, fontsize=16)
+
+    sns.histplot(data=df, x="county_split_count", discrete=True, ax=axes[0])
+    axes[0].set_title("county splits")
+    axes[0].set_xlabel("unique counties split")
+
+    sns.histplot(data=df, x="county_fragments", discrete=True, ax=axes[1])
+    axes[1].set_title("county fragments")
+    axes[1].set_xlabel("total county pieces")
+
+    sns.histplot(data=df, x="community_fragments", discrete=True, ax=axes[2])
+    axes[2].set_title("community fragments")
+    axes[2].set_xlabel("total community pieces")
+
+    plt.tight_layout()
+    plt.show()
