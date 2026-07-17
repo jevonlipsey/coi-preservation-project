@@ -46,7 +46,7 @@ def unoptimized_tcp(partition):
     unoptimized_accepted_track.append(accepted)
     return accepted
 
-'''
+
 def optimized_tcp(partition):
     global optimized_accepted_track
     current_score = partition["weighted_tcp_score"]
@@ -76,117 +76,37 @@ def optimized_tcp(partition):
             accepted[3] = random.random() < 0.7
             accepted[4] = random.random() < 0.8
     return accepted
-'''
 
+'''
 def optimized_tcp(partition):
     global optimized_accepted_track
     current_score = partition["weighted_tcp_score"]
     previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    
+    #desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
+
     margin = (
         abs(current_score - previous_score) / previous_score
         if previous_score != 0
         else 0
     )
 
+    #print(margin)
     accepted = False
-    if current_score > previous_score:
-        accepted = True
-    else:
-        if margin > 0.01:
-            accepted = random.random() < 0.1
+    for i in range(accepted):
+        if current_score > previous_score:
+            accepted = True
         else:
-            accepted = random.random() < 0.4
+            if margin > 0.01:
+                accepted = random.random() < 0.1
+            else:
+                accepted = random.random() < 0.4
     return accepted
-
-def optimized_tcp_one(partition):
-    global optimized_accepted_track
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    
-    margin = (
-        abs(current_score - previous_score) / previous_score
-        if previous_score != 0
-        else 0
-    )
-
-    accepted = False
-    if current_score > previous_score:
-        accepted = True
-    else:
-        if margin > 0.01:
-            accepted = random.random() < 0.2
-        else:
-            accepted = random.random() < 0.5
-    return accepted
-
-def optimized_tcp_two(partition):
-    global optimized_accepted_track
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    
-    margin = (
-        abs(current_score - previous_score) / previous_score
-        if previous_score != 0
-        else 0
-    )
-
-    accepted = False
-    if current_score > previous_score:
-        accepted = True
-    else:
-        if margin > 0.01:
-            accepted = random.random() < 0.3
-        else:
-            accepted = random.random() < 0.6
-    return accepted
-
-def optimized_tcp_three(partition):
-    global optimized_accepted_track
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    
-    margin = (
-        abs(current_score - previous_score) / previous_score
-        if previous_score != 0
-        else 0
-    )
-
-    accepted = False
-    if current_score > previous_score:
-        accepted = True
-    else:
-        if margin > 0.01:
-            accepted = random.random() < 0.4
-        else:
-            accepted = random.random() < 0.7
-    return accepted
-
-def optimized_tcp_four(partition):
-    global optimized_accepted_track
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    
-    margin = (
-        abs(current_score - previous_score) / previous_score
-        if previous_score != 0
-        else 0
-    )
-
-    accepted = False
-    if current_score > previous_score:
-        accepted = True
-    else:
-        if margin > 0.01:
-            accepted = random.random() < 0.5
-        else:
-            accepted = random.random() < 0.8
-    return accepted
-
+'''
 def optimized_cs(partition):
     #global optimized_accepted_track
     current_score = partition["communities_split"]
     previous_score = partition.parent["communities_split"] if partition.parent else 0
+    #desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
 
     margin = (
         abs(current_score - previous_score) 
@@ -208,6 +128,8 @@ def optimized_se(partition):
     global optimized_accepted_track
     current_score = partition["shannon_entropy"]
     previous_score = partition.parent["shannon_entropy"] if partition.parent else 0
+    #desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
+
     
     margin = (
         abs(current_score - previous_score) / previous_score
@@ -229,6 +151,7 @@ def optimized_sr(partition):
     global optimized_accepted_track
     current_score = partition["sr_entropy"]
     previous_score = partition.parent["sr_entropy"] if partition.parent else 0
+    #desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
 
     margin = (
         abs(current_score - previous_score) / previous_score
@@ -251,6 +174,7 @@ def optimized_es(partition):
     global optimized_accepted_track
     current_score = partition["even_splits"]
     previous_score = partition.parent["even_splits"] if partition.parent else 0
+    #desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
 
     margin = (
         abs(current_score - previous_score) / previous_score
@@ -268,26 +192,10 @@ def optimized_es(partition):
             accepted = random.random() < 0.4
     return accepted
 
-def county_optimized(partition):
-    global optimized_accepted_track
-    current_score = partition["county_splits"]
-    previous_score = partition.parent["county_splits"] if partition.parent else 0
-    
-    accepted = False
-    if 4 >= current_score and 14<= current_score:
-        accepted = True
-    else:
-        accepted = False
-    return accepted
-
 
 STRATEGIES = {
     'neutral': always_accept,
     'optimized': optimized_tcp,
-    'optimized_one': optimized_tcp_one,
-    'optimized_two': optimized_tcp_two,
-    'optimized_three': optimized_tcp_three,
-    'optimized_four': optimized_tcp_four,
     'unoptimized': unoptimized_tcp,
     'optimized_cs': optimized_cs,
     'optimized_se': optimized_se,
