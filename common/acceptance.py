@@ -1,5 +1,6 @@
 from gerrychain.accept import always_accept
 import random
+import math
 
 optimized_accepted_track = []
 unoptimized_accepted_track = []
@@ -48,12 +49,9 @@ def unoptimized_tcp(partition):
     return accepted
 
 
-"""
 def optimized_tcp(partition):
-    global optimized_accepted_track
     current_score = partition["weighted_tcp_score"]
     previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    # desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
 
     margin = (
         abs(current_score - previous_score) / previous_score
@@ -61,48 +59,14 @@ def optimized_tcp(partition):
         else 0
     )
 
-    accepted = [False, False, False, False, False]
+    accepted = False
     if current_score > previous_score:
-        accepted[:] = [True]
+        accepted = True
     else:
         if margin > 0.01:
-            accepted[0] = random.random() < 0.1
-            accepted[1] = random.random() < 0.2
-            accepted[2] = random.random() < 0.3
-            accepted[3] = random.random() < 0.4
-            accepted[4] = random.random() < 0.5
+            accepted = random.random() < 0.1
         else:
-            accepted[0] = random.random() < 0.4
-            accepted[1] = random.random() < 0.5
-            accepted[2] = random.random() < 0.6
-            accepted[3] = random.random() < 0.7
-            accepted[4] = random.random() < 0.8
-    return accepted
-"""
-
-
-def optimized_tcp(partition):
-    global optimized_accepted_track
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    # desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
-
-    margin = (
-        abs(current_score - previous_score) / previous_score
-        if previous_score != 0
-        else 0
-    )
-
-    # print(margin)
-    accepted = False
-    for i in range(accepted):
-        if current_score > previous_score:
-            accepted = True
-        else:
-            if margin > 0.01:
-                accepted = random.random() < 0.1
-            else:
-                accepted = random.random() < 0.4
+            accepted = random.random() < 0.4
     return accepted
 
 
@@ -193,77 +157,160 @@ def optimized_es(partition):
             accepted = random.random() < 0.4
     return accepted
 
-
-import math
-
-
-def baseline_counties(partition):
-    """
-    legal neutral: targets the enacted split count of ~9.
-    """
-    splits = partition["county_split_count"]
-
-    # if it's as good or better than the enacted plan, always accept
-    if splits <= 9:
-        return True
-
-    # if it's worse, accept with decreasing probability (soft constraint)
-    # 10 splits = 36% accept, 11 splits = 13% accept, 12 splits = 5% accept
-    prob = math.exp(-(splits - 9))
-    return random.random() < prob
-
-
-def optimized_tcp_sa(partition):
+def optimized_tcp_proportional_50(partition):
     """
     optimizing tcp using simulated annealing, a statistical model for finding global max
     """
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
 
     if current_score >= previous_score:
         return True
+    beta = 50
+    delta = current_score - previous_score
 
-    # simulated annealing formula: exp(beta * delta)
-    # higher beta = more likely to accept worse solutions, lower beta = less likely to accept worse solutions
-    # 50 = hot, 100 = warm, 200 = cold
+    prob = math.exp(beta * delta)
+    return random.random() < prob
+
+def optimized_tcp_proportional_100(partition):
+    """
+    optimizing tcp using simulated annealing, a statistical model for finding global max
+    """
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    if current_score >= previous_score:
+        return True
     beta = 100
     delta = current_score - previous_score
 
     prob = math.exp(beta * delta)
     return random.random() < prob
 
-
-def optimized_both(partition):
+def optimized_tcp_proportional_200(partition):
     """
-    compromising: optimizing tcp with simulated annealing, but penalizng for county splits > 9
+    optimizing tcp using simulated annealing, a statistical model for finding global max
     """
-    splits = partition["county_split_count"]
-    current_tcp = partition["weighted_tcp_score"]
-    previous_tcp = partition.parent["weighted_tcp_score"] if partition.parent else 0
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
 
-    # high splits = hard reject (+5)
-    if splits > 14:
-        return False
-
-    # if splits are ok, use simmulated annealing on tcp
-    if current_tcp >= previous_tcp:
+    if current_score >= previous_score:
         return True
+    beta = 200
+    delta = current_score - previous_score
 
-    beta = 100
-    delta = current_tcp - previous_tcp
     prob = math.exp(beta * delta)
-
     return random.random() < prob
+
+def optimized_tcp_margin_10_40(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    margin = (
+        abs(current_score - previous_score) / previous_score
+        if previous_score != 0
+        else 0
+    )
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+        if margin > 0.01:
+            accepted = random.random() < 0.1
+        else:
+            accepted = random.random() < 0.4
+    return accepted
+
+def optimized_tcp_margin_20_50(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    margin = (
+        abs(current_score - previous_score) / previous_score
+        if previous_score != 0
+        else 0
+    )
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+        if margin > 0.01:
+            accepted = random.random() < 0.2
+        else:
+            accepted = random.random() < 0.5
+    return accepted
+
+def optimized_tcp_margin_30_60(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    margin = (
+        abs(current_score - previous_score) / previous_score
+        if previous_score != 0
+        else 0
+    )
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+        if margin > 0.01:
+            accepted = random.random() < 0.2
+        else:
+            accepted = random.random() < 0.5
+    return accepted
+
+def optimized_tcp_simple_25(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+         accepted = random.random() < 0.25
+    return accepted
+
+def optimized_tcp_simple_50(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+         accepted = random.random() < 0.5
+    return accepted
+
+def optimized_tcp_simple_75(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+         accepted = random.random() < 0.75
+    return accepted
 
 
 STRATEGIES = {
     "neutral": always_accept,
-    "baseline_counties": baseline_counties,
-    "optimized_tcp": optimized_tcp_sa,
-    "optimized_both": optimized_both,
+    "optimized_tcp": optimized_tcp,
     "unoptimized": unoptimized_tcp,
     "optimized_cs": optimized_cs,
     "optimized_se": optimized_se,
     "optimized_sr": optimized_sr,
     "optimized_es": optimized_es,
+    "proportional_50": optimized_tcp_proportional_50,
+    "proportional_100": optimized_tcp_proportional_100,
+    "proportional_200": optimized_tcp_proportional_200,
+    "margin_10_40": optimized_tcp_margin_10_40,
+    "margin_20_50": optimized_tcp_margin_20_50,
+    "margin_30_60": optimized_tcp_margin_30_60,
+    "simple_25": optimized_tcp_simple_25,
+    "simple_50": optimized_tcp_simple_50,
+    "simple_75": optimized_tcp_simple_75,
 }
