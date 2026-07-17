@@ -48,12 +48,10 @@ def unoptimized_tcp(partition):
     return accepted
 
 
-"""
 def optimized_tcp(partition):
     global optimized_accepted_track
     current_score = partition["weighted_tcp_score"]
     previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    # desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
 
     margin = (
         abs(current_score - previous_score) / previous_score
@@ -61,48 +59,14 @@ def optimized_tcp(partition):
         else 0
     )
 
-    accepted = [False, False, False, False, False]
+    accepted = False
     if current_score > previous_score:
-        accepted[:] = [True]
+        accepted = True
     else:
         if margin > 0.01:
-            accepted[0] = random.random() < 0.1
-            accepted[1] = random.random() < 0.2
-            accepted[2] = random.random() < 0.3
-            accepted[3] = random.random() < 0.4
-            accepted[4] = random.random() < 0.5
+            accepted = random.random() < 0.1
         else:
-            accepted[0] = random.random() < 0.4
-            accepted[1] = random.random() < 0.5
-            accepted[2] = random.random() < 0.6
-            accepted[3] = random.random() < 0.7
-            accepted[4] = random.random() < 0.8
-    return accepted
-"""
-
-
-def optimized_tcp(partition):
-    global optimized_accepted_track
-    current_score = partition["weighted_tcp_score"]
-    previous_score = partition.parent["weighted_tcp_score"] if partition.parent else 0
-    # desired_tcp = partition.graph.graph.graph.get("DESIRED_TCP", 0.5)
-
-    margin = (
-        abs(current_score - previous_score) / previous_score
-        if previous_score != 0
-        else 0
-    )
-
-    # print(margin)
-    accepted = False
-    for i in range(accepted):
-        if current_score > previous_score:
-            accepted = True
-        else:
-            if margin > 0.01:
-                accepted = random.random() < 0.1
-            else:
-                accepted = random.random() < 0.4
+            accepted = random.random() < 0.4
     return accepted
 
 
@@ -199,18 +163,28 @@ import math
 
 def baseline_counties(partition):
     """
-    legal neutral: targets the enacted split count of ~9.
+    legal neutral: aggressively optimizes to keep county splits low, targeting ~9.
     """
-    splits = partition["county_split_count"]
+    current_splits = partition["county_split_count"]
+    previous_splits = (
+        partition.parent["county_split_count"] if partition.parent else current_splits
+    )
 
-    # if it's as good or better than the enacted plan, always accept
-    if splits <= 9:
+    # If we hit the Enacted target, accept everything to explore the "legal" space
+    if current_splits <= 9:
         return True
 
-    # if it's worse, accept with decreasing probability (soft constraint)
-    # 10 splits = 36% accept, 11 splits = 13% accept, 12 splits = 5% accept
-    prob = math.exp(-(splits - 9))
-    return random.random() < prob
+    # If it improves the splits (lowers them), always accept
+    if current_splits < previous_splits:
+        return True
+
+    # If splits stay exactly the same, accept most of the time to allow lateral exploration
+    if current_splits == previous_splits:
+        return random.random() < 0.80
+
+    # If splits get WORSE (increase), strongly reject
+    # 5% chance to accept a worse map just to avoid getting permanently stuck
+    return random.random() < 0.05
 
 
 def optimized_tcp_sa(partition):
@@ -235,31 +209,33 @@ def optimized_tcp_sa(partition):
 
 def optimized_both(partition):
     """
-    compromising: optimizing tcp with simulated annealing, but penalizng for county splits > 9
+    compromising: optimizing tcp with margin heuristic, but hard capping county splits > 14
     """
     splits = partition["county_split_count"]
     current_tcp = partition["weighted_tcp_score"]
     previous_tcp = partition.parent["weighted_tcp_score"] if partition.parent else 0
 
-    # high splits = hard reject (+5)
+    # hard legal ceiling for county splits
     if splits > 14:
         return False
 
-    # if splits are ok, use simmulated annealing on tcp
-    if current_tcp >= previous_tcp:
+    # if splits are legal, use the standard TCP margin heuristic
+    margin = abs(current_tcp - previous_tcp) / previous_tcp if previous_tcp != 0 else 0
+
+    if current_tcp > previous_tcp:
         return True
-
-    beta = 100
-    delta = current_tcp - previous_tcp
-    prob = math.exp(beta * delta)
-
-    return random.random() < prob
+    else:
+        if margin > 0.01:
+            return random.random() < 0.1
+        else:
+            return random.random() < 0.4
 
 
 STRATEGIES = {
     "neutral": always_accept,
     "baseline_counties": baseline_counties,
-    "optimized_tcp": optimized_tcp_sa,
+    "optimized_tcp": optimized_tcp,
+    "optimized_tcp_sa": optimized_tcp_sa,
     "optimized_both": optimized_both,
     "unoptimized": unoptimized_tcp,
     "optimized_cs": optimized_cs,
