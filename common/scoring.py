@@ -222,6 +222,24 @@ def communities_split(partition):
     return sum(1 for dist_pops in cdp.values() if len(dist_pops) > 1)
 
 
+def community_fragments(partition):
+    """total number of community pieces (district intersections). requires '_coi_state'."""
+    cdp = partition['_coi_state']
+    return sum(len(dist_pops) for dist_pops in cdp.values())
+
+
+def count_county_splits(partition):
+    """requires 'county_splits' updater from gerrychain"""
+    splits_dict = partition['county_splits']
+    return sum(1 for info in splits_dict.values() if len(info.contains) > 1)
+
+
+def count_county_fragments(partition):
+    """requires 'county_splits' updater from gerrychain"""
+    splits_dict = partition['county_splits']
+    return sum(len(info.contains) for info in splits_dict.values())
+
+
 def effective_splits(partition):
     """pop-weighted avg of (1/sss - 1). requires '_coi_state'."""
     cdp = partition['_coi_state']
