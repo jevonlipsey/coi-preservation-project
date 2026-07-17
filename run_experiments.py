@@ -21,6 +21,20 @@ experiments = [
         "desired_tcp": 0.85,
     },
     {
+        "accept": "proportional_50",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "proportional_100",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
         "accept": "proportional_100",
         "run_id": 2,
         "weights": "test_weights",
@@ -29,6 +43,20 @@ experiments = [
     },
     {
         "accept": "proportional_200",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "proportional_200",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "margin_10_40",
         "run_id": 1,
         "weights": "test_weights",
         "steps": 100_000,
@@ -49,6 +77,20 @@ experiments = [
         "desired_tcp": 0.85,
     },
     {
+        "accept": "margin_20_50",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "margin_30_60",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
         "accept": "margin_30_60",
         "run_id": 2,
         "weights": "test_weights",
@@ -57,6 +99,20 @@ experiments = [
     },
     {
         "accept": "simple_25",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "simple_25",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "simple_50",
         "run_id": 1,
         "weights": "test_weights",
         "steps": 100_000,
@@ -72,6 +128,13 @@ experiments = [
     {
         "accept": "simple_75",
         "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+    },
+    {
+        "accept": "simple_75",
+        "run_id": 2,
         "weights": "test_weights",
         "steps": 100_000,
         "desired_tcp": 0.85,
