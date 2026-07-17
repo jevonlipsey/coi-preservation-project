@@ -1,0 +1,15 @@
+numpy
+pandas 
+geopandas 
+matplotlib 
+networkx 
+gerrychain 
+jinja2 
+nbformat 
+papermill
+seaborn
+plotly
+transformers 
+spacy 
+torch
+torchvision

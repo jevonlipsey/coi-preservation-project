@@ -283,7 +283,7 @@ def plot_partition_detailed(
     maps it to the vtds, and passes it to the interactive plotly map func.
     """
     # extract data and score
-    df_part = partition["raw_df"]
+    df_part = scoring.extract_data(partition)
     community_scores = scoring.score_communities(df_part)
 
     # map to temp col
@@ -478,3 +478,80 @@ def plot_partisan_shift(df, score_col="weighted_tcp_score", top_q=0.80, bottom_q
     ]
     ax.legend(handles=legend_elements, loc="upper left")
     plt.show()
+
+
+def plot_mix(
+    csv_a,
+    csv_b,
+    label_a="csv_a",
+    label_b="csv_b",
+    share_col_prefix="dist_",
+    title="Democratic Vote Share Comparison",
+):
+    """Plot democratic vote-share distributions from two CSV files or dataframes."""
+
+    def _coerce_frame(data):
+        if isinstance(data, pd.DataFrame):
+            return data.copy()
+        if isinstance(data, str):
+            return pd.read_csv(data)
+        raise TypeError("Expected a pandas DataFrame or a CSV file path")
+
+    df_a = _coerce_frame(csv_a)
+    df_b = _coerce_frame(csv_b)
+
+    share_cols_a = [
+        col for col in df_a.columns if col.startswith(share_col_prefix) and col.endswith("_dem_share")
+    ]
+    share_cols_b = [
+        col for col in df_b.columns if col.startswith(share_col_prefix) and col.endswith("_dem_share")
+    ]
+
+    if not share_cols_a or not share_cols_b:
+        raise ValueError("No district dem-share columns found in the provided data")
+
+    if len(share_cols_a) != len(share_cols_b):
+        raise ValueError("The two inputs must contain the same number of district dem-share columns")
+
+    data_a = [df_a[col].dropna() for col in share_cols_a]
+    data_b = [df_b[col].dropna() for col in share_cols_b]
+
+    fig, ax = plt.subplots(figsize=(14, 7))
+
+    pos_a = np.arange(1, len(share_cols_a) + 1) - 0.15
+    pos_b = np.arange(1, len(share_cols_b) + 1) + 0.15
+
+    ax.boxplot(
+        data_a,
+        positions=pos_a,
+        widths=0.25,
+        patch_artist=True,
+        boxprops=dict(facecolor="lightcoral", color="black"),
+        medianprops=dict(color="black", linewidth=1.5),
+    )
+
+    ax.boxplot(
+        data_b,
+        positions=pos_b,
+        widths=0.25,
+        patch_artist=True,
+        boxprops=dict(facecolor="lightgreen", color="black"),
+        medianprops=dict(color="black", linewidth=1.5),
+    )
+
+    ax.axhline(0.5, color="red", linestyle="dashed", linewidth=2, label="50% Win Threshold")
+    ax.set_xticks(range(1, len(share_cols_a) + 1))
+    ax.set_xticklabels([f"Dist {i}" for i in range(1, len(share_cols_a) + 1)])
+    ax.set_title(title, fontsize=16)
+    ax.set_xlabel("District")
+    ax.set_ylabel("Democratic Vote Share")
+
+    legend_elements = [
+        Patch(facecolor="lightcoral", edgecolor="black", label=label_a),
+        Patch(facecolor="lightgreen", edgecolor="black", label=label_b),
+    ]
+    ax.legend(handles=legend_elements, loc="upper left")
+    plt.show()
+
+
+### new plots
