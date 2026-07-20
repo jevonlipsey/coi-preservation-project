@@ -14,29 +14,167 @@ STATE_CONFIG = {
 
 experiments = [
     {
-        "accept": "optimized_tcp",
+        "accept": "proportional_cs_50",
         "run_id": 1,
         "weights": "test_weights",
-        "steps": 500_000,
-        "desired_tcp": 0.8,
-        "dist_lev": "cog" #district level: cog, ss, sh
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
     },
     {
-        "accept": "optimized_tcp",
-        "run_id": 1,
+        "accept": "proportional_cs_50",
+        "run_id": 2,
         "weights": "test_weights",
-        "steps": 500_000,
-        "desired_tcp": 0.6,
-        "dist_lev": "ss"
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
     },
     {
-        "accept": "optimized_tcp",
+        "accept": "proportional_cs_100",
         "run_id": 1,
         "weights": "test_weights",
-        "steps": 500_000,
-        "desired_tcp": 0.575,
-        "dist_lev": "sh"
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
     },
+    {
+        "accept": "proportional_cs_100",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "proportional_cs_200",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "proportional_cs_200",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "margin_cs_10_40",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "margin_cs_10_40",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "margin_cs_20_50",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "margin_cs_20_50",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "margin_cs_30_60",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "margin_cs_30_60",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "simple_cs_25",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "simple_cs_25",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "simple_cs_50",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "simple_cs_50",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "simple_cs_75",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "simple_cs_75",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "neutral",
+        "run_id": 1,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+    {
+        "accept": "neutral",
+        "run_id": 2,
+        "weights": "test_weights",
+        "steps": 100_000,
+        "desired_tcp": 0.85,
+        "dist_lev": "cog"
+    },
+
+
 ]
 
 

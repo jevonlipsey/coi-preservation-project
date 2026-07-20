@@ -295,6 +295,144 @@ def optimized_tcp_simple_75(partition):
          accepted = random.random() < 0.75
     return accepted
 
+def optimized_cs_simple_25(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+         accepted = random.random() < 0.25
+    return accepted
+
+def optimized_cs_simple_50(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+         accepted = random.random() < 0.5
+    return accepted
+
+def optimized_cs_simple_75(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+         accepted = random.random() < 0.75
+    return accepted
+
+def optimized_cs_proportional_50(partition):
+    """
+    optimizing tcp using simulated annealing, a statistical model for finding global max
+    """
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    if current_score <= previous_score:
+        return True
+    beta = 50
+    delta = current_score - previous_score
+
+    prob = math.exp(beta * delta)
+    return random.random() < prob
+
+def optimized_cs_proportional_100(partition):
+    """
+    optimizing tcp using simulated annealing, a statistical model for finding global max
+    """
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    if current_score <= previous_score:
+        return True
+    beta = 100
+    delta = current_score - previous_score
+
+    prob = math.exp(beta * delta)
+    return random.random() < prob
+
+def optimized_cs_proportional_200(partition):
+    """
+    optimizing tcp using simulated annealing, a statistical model for finding global max
+    """
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    if current_score <= previous_score:
+        return True
+    beta = 200
+    delta = current_score - previous_score
+
+    prob = math.exp(beta * delta)
+    return random.random() < prob
+
+def optimized_cs_margin_10_40(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    margin = (
+        abs(current_score - previous_score) / previous_score
+        if previous_score != 0
+        else 0
+    )
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+        if margin > 6:
+            accepted = random.random() < 0.1
+        else:
+            accepted = random.random() < 0.4
+    return accepted
+
+def optimized_cs_margin_20_50(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    margin = (
+        abs(current_score - previous_score) / previous_score
+        if previous_score != 0
+        else 0
+    )
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+        if margin > 6:
+            accepted = random.random() < 0.2
+        else:
+            accepted = random.random() < 0.5
+    return accepted
+
+def optimized_cs_margin_30_60(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    margin = (
+        abs(current_score - previous_score) / previous_score
+        if previous_score != 0
+        else 0
+    )
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+        if margin > 6:
+            accepted = random.random() < 0.3
+        else:
+            accepted = random.random() < 0.6
+    return accepted
+
 
 STRATEGIES = {
     "neutral": always_accept,
@@ -313,4 +451,13 @@ STRATEGIES = {
     "simple_25": optimized_tcp_simple_25,
     "simple_50": optimized_tcp_simple_50,
     "simple_75": optimized_tcp_simple_75,
+    "proportional_cs_50": optimized_cs_proportional_50,
+    "proportional_cs_100": optimized_cs_proportional_100,
+    "proportional_cs_200": optimized_cs_proportional_200,
+    "margin_cs_10_40": optimized_cs_margin_10_40,
+    "margin_cs_20_50": optimized_cs_margin_20_50,
+    "margin_cs_30_60": optimized_cs_margin_30_60,
+    "simple_cs_25": optimized_cs_simple_25,
+    "simple_cs_50": optimized_cs_simple_50,
+    "simple_cs_75": optimized_cs_simple_75,
 }
