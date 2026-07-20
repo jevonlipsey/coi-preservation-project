@@ -5,108 +5,49 @@ import papermill as pm
 
 ### init
 # run one or both
-TARGET_STATES = ["co"]
+TARGET_STATES = ["co, mo"]
 
 STATE_CONFIG = {
     "mo": {"notebook": "mo/mo_scoring.ipynb", "state_name": "missouri"},
     "co": {"notebook": "co/co_scoring.ipynb", "state_name": "colorado"}, 
 }
 
-experiments = [
-    {
-        "accept": "proportional_cs_50",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "proportional_cs_100",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "proportional_cs_200",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "margin_cs_10_40",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "margin_cs_20_50",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "margin_cs_30_60",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "simple_cs_25",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "simple_cs_50",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "simple_cs_75",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    },
-    {
-        "accept": "neutral",
-        "run_id": 1,
-        "weights": "test_weights",
-        "steps": 100_000,
-        "desired_tcp": 0.85,
-        "objective": "tcp",
-        "region_surcharge": {"county": 100, "coi": 0}
-    }
-]
+from common.acceptance import STRATEGIES
 
-# duplicate jobs for v2
-experiments = experiments + [dict(e, run_id=2) for e in experiments]
+# build experiments programmatically from STRATEGIES
+def strategy_objective(name: str) -> str:
+    # strategies explicitly targeting communities split contain '_cs' or are named 'optimized_cs'
+    if '_cs' in name or name == 'optimized_cs':
+        return 'cs'
+    return 'tcp'
+
+base_experiments = []
+for name in STRATEGIES.keys():
+    obj = strategy_objective(name)
+    # surcharge presets to explore
+    SURCHARGE_PRESETS = [
+        {'county': 100, 'coi': 0},
+        {'county': 75, 'coi': 0},
+        {'county': 60, 'coi': 0},
+        {'county': 50, 'coi': 0},
+        {'county': 0, 'coi': 0},
+    ]
+    # always include two replicas (run_id 1 and 2) for each surcharge preset
+    for surcharge in SURCHARGE_PRESETS:
+        for run_id in (1, 2):
+            base_experiments.append(
+                {
+                    'accept': name,
+                    'run_id': run_id,
+                    'weights': 'test_weights',
+                    'steps': 100_000,
+                    'desired_tcp': 0.85,
+                    'objective': obj,
+                    'region_surcharge': surcharge,
+                }
+            )
+
+experiments = base_experiments
 
 ### run
 def run_experiment(job):
@@ -132,14 +73,14 @@ def run_experiment(job):
     # stagger runs
     time.sleep(exp["run_id"] * 2)
 
-    csv_name = f"{config['state_name']}_{exp['dist_lev']}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
+    csv_name = f"{config['state_name']}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
 
     # Also save the notebook execution to the same place or a notebooks folder?
     # Let's just output it to the results_dir
     
     pm.execute_notebook(
         config["notebook"],  # template
-        f"{results_dir}/{state}_{exp['accept']}_{exp['dist_lev']}_v{exp['run_id']}.ipynb",  # output
+        f"{results_dir}/{state}_{exp['accept']}_v{exp['run_id']}.ipynb",  # output
         parameters=dict(
             STATE_NAME=config["state_name"],
             ACCEPT_STRATEGY_NAME=exp["accept"],
