@@ -80,8 +80,8 @@ def run_experiment(job):
     surcharge = exp.get("region_surcharge", {})
     county_val, coi_val = get_surcharge_vals(surcharge)
 
-    results_dir = Path("analysis") / "results" / objective / f"county_{county_val}_coi_{coi_val}"
-    gallery_dir = Path("analysis") / "gallery" / objective / f"county_{county_val}_coi_{coi_val}"
+    results_dir = Path.cwd() / "analysis" / "results" / objective / f"county_{county_val}_coi_{coi_val}"
+    gallery_dir = Path.cwd() / "analysis" / "gallery" / objective / f"county_{county_val}_coi_{coi_val}"
 
     results_dir.mkdir(parents=True, exist_ok=True)
     gallery_dir.mkdir(parents=True, exist_ok=True)
@@ -93,18 +93,19 @@ def run_experiment(job):
     csv_path = results_dir / f"{csv_name}.csv"
     notebook_output = results_dir / f"{state}_{exp['accept']}_v{exp['run_id']}.ipynb"
     gallery_base = gallery_dir / csv_name
+    os.makedirs(gallery_base, exist_ok=True)
 
     pm.execute_notebook(
         config["notebook"],  # template
-        str(notebook_output),  # output
+        notebook_output.as_posix(),  # output
         parameters=dict(
             STATE_NAME=config["state_name"],
             ACCEPT_STRATEGY_NAME=exp["accept"],
             WEIGHTS_FILE=exp["weights"],
             MARKOV_STEPS=exp["steps"],
             DESIRED_TCP=exp["desired_tcp"],
-            CSV_FILENAME=str(csv_path),
-            GALLERY_DIR=str(gallery_base),
+            CSV_FILENAME=csv_path.as_posix(),
+            GALLERY_DIR=f"{gallery_base.as_posix()}/",
             REGION_SURCHARGE=surcharge,
             DIST_LEVEL="cog",
         ),
