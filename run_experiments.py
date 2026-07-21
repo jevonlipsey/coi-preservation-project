@@ -26,11 +26,10 @@ STRATEGIES = [
 
 # For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
 SURCHARGES = [
-    {"COUNTYFP20": 1.0},
-    {"COUNTYFP20": .75},
-    {"COUNTYFP20": .60},
-    {"COUNTYFP20": .50},
-    {"COUNTYFP20": .25},
+    {"COUNTYFP20": 0.55},
+    {"COUNTYFP20": 0.6},
+    {"COUNTYFP20": 0.65},
+    {"COUNTYFP20": 0.7},
     {"COUNTYFP20": 0},
 ]
 
@@ -81,8 +80,20 @@ def run_experiment(job):
     surcharge = exp.get("region_surcharge", {})
     county_val, coi_val = get_surcharge_vals(surcharge)
 
-    results_dir = Path.cwd() / "analysis" / "results" / objective / f"county_{county_val}_coi_{coi_val}"
-    gallery_dir = Path.cwd() / "analysis" / "gallery" / objective / f"county_{county_val}_coi_{coi_val}"
+    results_dir = (
+        Path.cwd()
+        / "analysis"
+        / "results"
+        / objective
+        / f"county_{county_val}_coi_{coi_val}"
+    )
+    gallery_dir = (
+        Path.cwd()
+        / "analysis"
+        / "gallery"
+        / objective
+        / f"county_{county_val}_coi_{coi_val}"
+    )
 
     results_dir.mkdir(parents=True, exist_ok=True)
     gallery_dir.mkdir(parents=True, exist_ok=True)
