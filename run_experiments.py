@@ -7,7 +7,7 @@ import papermill as pm
 ### init
 # run one or both
 TARGET_STATES = ["co"]
-STEPS = 20
+STEPS = 100_000
 
 STATE_CONFIG = {
     "mo": {"notebook": "mo/mo_scoring.ipynb", "state_name": "missouri"},
@@ -26,10 +26,11 @@ STRATEGIES = [
 
 # For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
 SURCHARGES = [
-    {"COUNTYFP20": 100},
-    {"COUNTYFP20": 75},
-    {"COUNTYFP20": 60},
-    {"COUNTYFP20": 50},
+    {"COUNTYFP20": 1.0},
+    {"COUNTYFP20": .75},
+    {"COUNTYFP20": .60},
+    {"COUNTYFP20": .50},
+    {"COUNTYFP20": .25},
     {"COUNTYFP20": 0},
 ]
 
