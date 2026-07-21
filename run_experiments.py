@@ -7,7 +7,7 @@ import papermill as pm
 ### init
 # run one or both
 TARGET_STATES = ["co"]
-STEPS = 100_000
+STEPS = 250_000
 
 STATE_CONFIG = {
     "mo": {"notebook": "mo/mo_scoring.ipynb", "state_name": "missouri"},
@@ -57,10 +57,20 @@ def get_surcharge_vals(surcharge_dict):
     county_val = 0
     coi_val = 0
     for k, v in surcharge_dict.items():
-        if "COUNTY" in k.upper():
-            county_val = v
+        # normalize numeric types and convert fractional surcharges to percentages
+        try:
+            num = float(v)
+        except Exception:
+            continue
+        if 0 < num <= 1:
+            num = int(round(num * 100))
         else:
-            coi_val = v
+            num = int(round(num))
+
+        if "COUNTY" in k.upper():
+            county_val = num
+        else:
+            coi_val = num
     return county_val, coi_val
 
 

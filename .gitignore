@@ -3,6 +3,8 @@
 *.CSV
 results/
 **/results/
+*.json
+*.JSON
 
 .DS_Store
 .localized
