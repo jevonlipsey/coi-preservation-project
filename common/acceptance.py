@@ -157,6 +157,7 @@ def optimized_es(partition):
             accepted = random.random() < 0.4
     return accepted
 
+
 def optimized_tcp_proportional_50(partition):
     """
     optimizing tcp using simulated annealing, a statistical model for finding global max
@@ -171,6 +172,7 @@ def optimized_tcp_proportional_50(partition):
 
     prob = math.exp(beta * delta)
     return random.random() < prob
+
 
 def optimized_tcp_proportional_100(partition):
     """
@@ -187,6 +189,7 @@ def optimized_tcp_proportional_100(partition):
     prob = math.exp(beta * delta)
     return random.random() < prob
 
+
 def optimized_tcp_proportional_200(partition):
     """
     optimizing tcp using simulated annealing, a statistical model for finding global max
@@ -201,6 +204,7 @@ def optimized_tcp_proportional_200(partition):
 
     prob = math.exp(beta * delta)
     return random.random() < prob
+
 
 def optimized_tcp_margin_10_40(partition):
     current_score = partition["unweighted_tcp_score"]
@@ -222,6 +226,7 @@ def optimized_tcp_margin_10_40(partition):
             accepted = random.random() < 0.4
     return accepted
 
+
 def optimized_tcp_margin_20_50(partition):
     current_score = partition["unweighted_tcp_score"]
     previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
@@ -241,6 +246,7 @@ def optimized_tcp_margin_20_50(partition):
         else:
             accepted = random.random() < 0.5
     return accepted
+
 
 def optimized_tcp_margin_30_60(partition):
     current_score = partition["unweighted_tcp_score"]
@@ -262,6 +268,19 @@ def optimized_tcp_margin_30_60(partition):
             accepted = random.random() < 0.5
     return accepted
 
+
+def optimized_tcp_simple_12_5(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+        accepted = random.random() < 0.125
+    return accepted
+
+
 def optimized_tcp_simple_25(partition):
     current_score = partition["unweighted_tcp_score"]
     previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
@@ -270,8 +289,21 @@ def optimized_tcp_simple_25(partition):
     if current_score > previous_score:
         accepted = True
     else:
-         accepted = random.random() < 0.25
+        accepted = random.random() < 0.25
     return accepted
+
+
+def optimized_tcp_simple_37_5(partition):
+    current_score = partition["unweighted_tcp_score"]
+    previous_score = partition.parent["unweighted_tcp_score"] if partition.parent else 0
+
+    accepted = False
+    if current_score > previous_score:
+        accepted = True
+    else:
+        accepted = random.random() < 0.375
+    return accepted
+
 
 def optimized_tcp_simple_50(partition):
     current_score = partition["unweighted_tcp_score"]
@@ -281,8 +313,9 @@ def optimized_tcp_simple_50(partition):
     if current_score > previous_score:
         accepted = True
     else:
-         accepted = random.random() < 0.5
+        accepted = random.random() < 0.5
     return accepted
+
 
 def optimized_tcp_simple_75(partition):
     current_score = partition["unweighted_tcp_score"]
@@ -292,8 +325,9 @@ def optimized_tcp_simple_75(partition):
     if current_score > previous_score:
         accepted = True
     else:
-         accepted = random.random() < 0.75
+        accepted = random.random() < 0.75
     return accepted
+
 
 def optimized_cs_simple_25(partition):
     current_score = partition["communities_split"]
@@ -303,8 +337,9 @@ def optimized_cs_simple_25(partition):
     if current_score < previous_score:
         accepted = True
     else:
-         accepted = random.random() < 0.25
+        accepted = random.random() < 0.25
     return accepted
+
 
 def optimized_cs_simple_50(partition):
     current_score = partition["communities_split"]
@@ -314,8 +349,9 @@ def optimized_cs_simple_50(partition):
     if current_score < previous_score:
         accepted = True
     else:
-         accepted = random.random() < 0.5
+        accepted = random.random() < 0.5
     return accepted
+
 
 def optimized_cs_simple_75(partition):
     current_score = partition["communities_split"]
@@ -325,8 +361,9 @@ def optimized_cs_simple_75(partition):
     if current_score < previous_score:
         accepted = True
     else:
-         accepted = random.random() < 0.75
+        accepted = random.random() < 0.75
     return accepted
+
 
 def optimized_cs_proportional_50(partition):
     """
@@ -343,6 +380,7 @@ def optimized_cs_proportional_50(partition):
     prob = math.exp(beta * delta)
     return random.random() < prob
 
+
 def optimized_cs_proportional_100(partition):
     """
     optimizing tcp using simulated annealing, a statistical model for finding global max
@@ -358,6 +396,7 @@ def optimized_cs_proportional_100(partition):
     prob = math.exp(beta * delta)
     return random.random() < prob
 
+
 def optimized_cs_proportional_200(partition):
     """
     optimizing tcp using simulated annealing, a statistical model for finding global max
@@ -372,6 +411,7 @@ def optimized_cs_proportional_200(partition):
 
     prob = math.exp(beta * delta)
     return random.random() < prob
+
 
 def optimized_cs_margin_10_40(partition):
     current_score = partition["communities_split"]
@@ -393,6 +433,7 @@ def optimized_cs_margin_10_40(partition):
             accepted = random.random() < 0.4
     return accepted
 
+
 def optimized_cs_margin_20_50(partition):
     current_score = partition["communities_split"]
     previous_score = partition.parent["communities_split"] if partition.parent else 0
@@ -412,6 +453,7 @@ def optimized_cs_margin_20_50(partition):
         else:
             accepted = random.random() < 0.5
     return accepted
+
 
 def optimized_cs_margin_30_60(partition):
     current_score = partition["communities_split"]
@@ -448,7 +490,9 @@ STRATEGIES = {
     "margin_10_40": optimized_tcp_margin_10_40,
     "margin_20_50": optimized_tcp_margin_20_50,
     "margin_30_60": optimized_tcp_margin_30_60,
+    "simple_12_5": optimized_tcp_simple_12_5,
     "simple_25": optimized_tcp_simple_25,
+    "simple_37_5": optimized_tcp_simple_37_5,
     "simple_50": optimized_tcp_simple_50,
     "simple_75": optimized_tcp_simple_75,
     "proportional_cs_50": optimized_cs_proportional_50,

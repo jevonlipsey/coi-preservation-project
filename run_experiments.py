@@ -5,51 +5,63 @@ import papermill as pm
 
 ### init
 # run one or both
-TARGET_STATES = ["co, mo"]
+TARGET_STATES = ["co"]
+STEPS = 20
 
 STATE_CONFIG = {
     "mo": {"notebook": "mo/mo_scoring.ipynb", "state_name": "missouri"},
-    "co": {"notebook": "co/co_scoring.ipynb", "state_name": "colorado"}, 
+    "co": {"notebook": "co/co_scoring.ipynb", "state_name": "colorado"},
 }
 
-from common.acceptance import STRATEGIES
+STRATEGIES = [
+    "simple_12_5",
+    "simple_25",
+    "simple_37_5",
+    "simple_50",
+    "neutral",
+]
 
-# build experiments programmatically from STRATEGIES
-def strategy_objective(name: str) -> str:
-    # strategies explicitly targeting communities split contain '_cs' or are named 'optimized_cs'
-    if '_cs' in name or name == 'optimized_cs':
-        return 'cs'
-    return 'tcp'
+# For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
+SURCHARGES = [
+    {"COUNTYFP20": 100},
+    {"COUNTYFP20": 75},
+    {"COUNTYFP20": 60},
+    {"COUNTYFP20": 50},
+    {"COUNTYFP20": 0},
+]
 
-base_experiments = []
-for name in STRATEGIES.keys():
-    obj = strategy_objective(name)
-    # surcharge presets to explore
-    SURCHARGE_PRESETS = [
-        {'county': 100, 'coi': 0},
-        {'county': 75, 'coi': 0},
-        {'county': 60, 'coi': 0},
-        {'county': 50, 'coi': 0},
-        {'county': 0, 'coi': 0},
-    ]
-    # always include two replicas (run_id 1 and 2) for each surcharge preset
-    for surcharge in SURCHARGE_PRESETS:
-        for run_id in (1, 2):
-            base_experiments.append(
-                {
-                    'accept': name,
-                    'run_id': run_id,
-                    'weights': 'test_weights',
-                    'steps': 100_000,
-                    'desired_tcp': 0.85,
-                    'objective': obj,
-                    'region_surcharge': surcharge,
-                }
-            )
+experiments = []
+for surcharge_dict in SURCHARGES:
+    for strategy in STRATEGIES:
+        experiments.append(
+            {
+                "accept": strategy,
+                "run_id": 1,
+                "weights": "test_weights",
+                "steps": STEPS,
+                "desired_tcp": 0.85,
+                "objective": "tcp",
+                "region_surcharge": surcharge_dict,
+            }
+        )
 
-experiments = base_experiments
+# duplicate jobs for v2
+experiments = experiments + [dict(e, run_id=2) for e in experiments]
+
 
 ### run
+def get_surcharge_vals(surcharge_dict):
+    """Extract numeric values for folder naming, regardless of state-specific keys"""
+    county_val = 0
+    coi_val = 0
+    for k, v in surcharge_dict.items():
+        if "COUNTY" in k.upper():
+            county_val = v
+        else:
+            coi_val = v
+    return county_val, coi_val
+
+
 def run_experiment(job):
     # quiet warnings
     devnull_fd = os.open(os.devnull, os.O_WRONLY)
@@ -61,23 +73,22 @@ def run_experiment(job):
 
     state, exp = job
     config = STATE_CONFIG[state]
-    
+
     objective = exp.get("objective", "tcp")
-    surcharge = exp.get("region_surcharge", {"county": 100, "coi": 0})
-    county_val = surcharge.get("county", 100)
-    coi_val = surcharge.get("coi", 0)
-    
+    surcharge = exp.get("region_surcharge", {})
+    county_val, coi_val = get_surcharge_vals(surcharge)
+
     results_dir = f"analysis/results/{objective}/county_{county_val}_coi_{coi_val}"
+    gallery_dir = f"analysis/gallery/{objective}/county_{county_val}_coi_{coi_val}"
+
     os.makedirs(results_dir, exist_ok=True)
+    os.makedirs(gallery_dir, exist_ok=True)
 
     # stagger runs
     time.sleep(exp["run_id"] * 2)
 
     csv_name = f"{config['state_name']}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
 
-    # Also save the notebook execution to the same place or a notebooks folder?
-    # Let's just output it to the results_dir
-    
     pm.execute_notebook(
         config["notebook"],  # template
         f"{results_dir}/{state}_{exp['accept']}_v{exp['run_id']}.ipynb",  # output
@@ -87,8 +98,10 @@ def run_experiment(job):
             WEIGHTS_FILE=exp["weights"],
             MARKOV_STEPS=exp["steps"],
             DESIRED_TCP=exp["desired_tcp"],
-            CSV_FILENAME=f"../{results_dir}/{csv_name}.csv", # relative to the cwd=state
+            CSV_FILENAME=f"../{results_dir}/{csv_name}.csv",  # relative to the cwd=state
+            GALLERY_DIR=f"../{gallery_dir}/{csv_name}",  # Base path for JSON files
             REGION_SURCHARGE=surcharge,
+            DIST_LEVEL="cog",
         ),
         cwd=state,
         autosave_cell_every=0,  # save at end
