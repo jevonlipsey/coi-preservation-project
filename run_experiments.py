@@ -14,7 +14,7 @@ STATE_CONFIG = {
     "co": {"notebook": "co/co_scoring.ipynb", "state_name": "colorado"},
 }
 
-OBJECTIVES = ["tcp"]
+OBJECTIVES = ["cs"]
 
 STRATEGIES = [
     "simple_12_5",
@@ -28,10 +28,7 @@ STRATEGIES = [
 SURCHARGES = [
     {"COUNTYFP20": 1.0},
     {"COUNTYFP20": .75},
-    {"COUNTYFP20": .60},
-    {"COUNTYFP20": .50},
-    {"COUNTYFP20": .25},
-    {"COUNTYFP20": 0},
+    {"COUNTYFP20": .60}
 ]
 
 experiments = []
