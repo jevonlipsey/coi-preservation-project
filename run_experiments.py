@@ -14,14 +14,14 @@ STATE_CONFIG = {
     "co": {"notebook": "co/co_scoring.ipynb", "state_name": "colorado"},
 }
 
+OBJECTIVES = ["tcp"]
+
 STRATEGIES = [
-    {"accept": "simple_12_5", "objective": "tcp"},
-    {"accept": "simple_25", "objective": "tcp"},
-    {"accept": "simple_37_5", "objective": "tcp"},
-    {"accept": "simple_50", "objective": "tcp"},
-    {"accept": "neutral", "objective": "tcp"},
-    # add cs strategies here with objective 'cs'
-    # {"accept": "margin_cs_10_40", "objective": "cs"},
+    "simple_12_5",
+    "simple_25",
+    "simple_37_5",
+    "simple_50",
+    "neutral",
 ]
 
 # For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
@@ -34,20 +34,21 @@ SURCHARGES = [
 ]
 
 experiments = []
-for surcharge_dict in SURCHARGES:
-    for strategy in STRATEGIES:
-        for run_id in (1, 2):
-            experiments.append(
-                {
-                    "accept": strategy["accept"],
-                    "run_id": run_id,
-                    "weights": "test_weights",
-                    "steps": STEPS,
-                    "desired_tcp": 0.85,
-                    "objective": strategy["objective"],
-                    "region_surcharge": surcharge_dict,
-                }
-            )
+for objective in OBJECTIVES:
+    for surcharge_dict in SURCHARGES:
+        for strategy in STRATEGIES:
+            for run_id in (1, 2):
+                experiments.append(
+                    {
+                        "accept": strategy,
+                        "run_id": run_id,
+                        "weights": "test_weights",
+                        "steps": STEPS,
+                        "desired_tcp": 0.85,
+                        "objective": objective,
+                        "region_surcharge": surcharge_dict,
+                    }
+                )
 
 
 ### run
