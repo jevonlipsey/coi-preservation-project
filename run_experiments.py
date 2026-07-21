@@ -1,6 +1,7 @@
 import os
 import time
 import multiprocessing
+from pathlib import Path
 import papermill as pm
 
 ### init
@@ -14,11 +15,13 @@ STATE_CONFIG = {
 }
 
 STRATEGIES = [
-    "simple_12_5",
-    "simple_25",
-    "simple_37_5",
-    "simple_50",
-    "neutral",
+    {"accept": "simple_12_5", "objective": "tcp"},
+    {"accept": "simple_25", "objective": "tcp"},
+    {"accept": "simple_37_5", "objective": "tcp"},
+    {"accept": "simple_50", "objective": "tcp"},
+    {"accept": "neutral", "objective": "tcp"},
+    # add cs strategies here with objective 'cs'
+    # {"accept": "margin_cs_10_40", "objective": "cs"},
 ]
 
 # For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
@@ -33,20 +36,18 @@ SURCHARGES = [
 experiments = []
 for surcharge_dict in SURCHARGES:
     for strategy in STRATEGIES:
-        experiments.append(
-            {
-                "accept": strategy,
-                "run_id": 1,
-                "weights": "test_weights",
-                "steps": STEPS,
-                "desired_tcp": 0.85,
-                "objective": "tcp",
-                "region_surcharge": surcharge_dict,
-            }
-        )
-
-# duplicate jobs for v2
-experiments = experiments + [dict(e, run_id=2) for e in experiments]
+        for run_id in (1, 2):
+            experiments.append(
+                {
+                    "accept": strategy["accept"],
+                    "run_id": run_id,
+                    "weights": "test_weights",
+                    "steps": STEPS,
+                    "desired_tcp": 0.85,
+                    "objective": strategy["objective"],
+                    "region_surcharge": surcharge_dict,
+                }
+            )
 
 
 ### run
@@ -78,28 +79,31 @@ def run_experiment(job):
     surcharge = exp.get("region_surcharge", {})
     county_val, coi_val = get_surcharge_vals(surcharge)
 
-    results_dir = f"analysis/results/{objective}/county_{county_val}_coi_{coi_val}"
-    gallery_dir = f"analysis/gallery/{objective}/county_{county_val}_coi_{coi_val}"
+    results_dir = Path("analysis") / "results" / objective / f"county_{county_val}_coi_{coi_val}"
+    gallery_dir = Path("analysis") / "gallery" / objective / f"county_{county_val}_coi_{coi_val}"
 
-    os.makedirs(results_dir, exist_ok=True)
-    os.makedirs(gallery_dir, exist_ok=True)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    gallery_dir.mkdir(parents=True, exist_ok=True)
 
     # stagger runs
     time.sleep(exp["run_id"] * 2)
 
     csv_name = f"{config['state_name']}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
+    csv_path = results_dir / f"{csv_name}.csv"
+    notebook_output = results_dir / f"{state}_{exp['accept']}_v{exp['run_id']}.ipynb"
+    gallery_base = gallery_dir / csv_name
 
     pm.execute_notebook(
         config["notebook"],  # template
-        f"{results_dir}/{state}_{exp['accept']}_v{exp['run_id']}.ipynb",  # output
+        str(notebook_output),  # output
         parameters=dict(
             STATE_NAME=config["state_name"],
             ACCEPT_STRATEGY_NAME=exp["accept"],
             WEIGHTS_FILE=exp["weights"],
             MARKOV_STEPS=exp["steps"],
             DESIRED_TCP=exp["desired_tcp"],
-            CSV_FILENAME=f"../{results_dir}/{csv_name}.csv",  # relative to the cwd=state
-            GALLERY_DIR=f"../{gallery_dir}/{csv_name}",  # Base path for JSON files
+            CSV_FILENAME=str(csv_path),
+            GALLERY_DIR=str(gallery_base),
             REGION_SURCHARGE=surcharge,
             DIST_LEVEL="cog",
         ),
