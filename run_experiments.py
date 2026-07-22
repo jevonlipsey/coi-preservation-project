@@ -26,11 +26,11 @@ STRATEGIES = [
 
 # For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
 SURCHARGES = [
+    {"COUNTYFP20": 0},
     {"COUNTYFP20": 0.55},
     {"COUNTYFP20": 0.6},
     {"COUNTYFP20": 0.65},
     {"COUNTYFP20": 0.7},
-    {"COUNTYFP20": 0},
 ]
 
 experiments = []
@@ -115,7 +115,7 @@ def run_experiment(job):
     csv_path = results_dir / f"{csv_name}.csv"
     notebook_output = results_dir / f"{state}_{exp['accept']}_v{exp['run_id']}.ipynb"
     gallery_base = gallery_dir / csv_name
-    os.makedirs(gallery_base, exist_ok=True)
+    os.makedirs(gallery_dir, exist_ok=True)
 
     pm.execute_notebook(
         config["notebook"],  # template
@@ -127,7 +127,7 @@ def run_experiment(job):
             MARKOV_STEPS=exp["steps"],
             DESIRED_TCP=exp["desired_tcp"],
             CSV_FILENAME=csv_path.as_posix(),
-            GALLERY_DIR=f"{gallery_base.as_posix()}/",
+            GALLERY_DIR=gallery_base.as_posix(),
             REGION_SURCHARGE=surcharge,
             DIST_LEVEL="cog",
         ),

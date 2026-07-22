@@ -5,6 +5,7 @@ results/
 **/results/
 *.json
 *.JSON
+**.jsonl.gz
 
 .DS_Store
 .localized
