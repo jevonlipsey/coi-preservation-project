@@ -3,6 +3,7 @@ import geopandas as gpd
 import networkx as nx
 from gerrychain import Graph
 from pathlib import Path
+from shapely.wkt import dumps
 
 ### config
 TARGET_STATES = ["mo", "co"]  # "mo", "co", or both
@@ -81,6 +82,22 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
     vtds.geometry = vtds.geometry.buffer(0)
     g = Graph.from_geodataframe(vtds)
 
+    # embed geometries for plotting
+    vtds_simp = vtds.copy()
+    vtds_simp.geometry = vtds_simp.geometry.simplify(50)
+    for n, data in g.nodes(data=True):
+        data['geometry_wkt'] = dumps(vtds_simp.geometry.iloc[n], rounding_precision=0)
+
+    cois_simp = cois.copy()
+    if cois_simp.crs != vtds.crs:
+        cois_simp = cois_simp.to_crs(vtds.crs)
+    cois_simp.geometry = cois_simp.geometry.simplify(50)
+    cois_dict = {}
+    for idx, row in cois_simp.iterrows():
+        cois_dict[row['cluster']] = dumps(row.geometry, rounding_precision=0)
+    g.graph['cois_wkt'] = cois_dict
+    g.graph['crs'] = vtds.crs.to_string() if vtds.crs else None
+
     out_path = Path(f"mo/data/mo_cog_{coi_map_name}.json")
     g.to_json(out_path.as_posix())
     print(f"MO initialized and graph saved to {out_path}")
@@ -143,6 +160,22 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
 
     vtds.geometry = vtds.geometry.buffer(0)
     g = Graph.from_geodataframe(vtds)
+
+    # embed geometries for plotting
+    vtds_simp = vtds.copy()
+    vtds_simp.geometry = vtds_simp.geometry.simplify(50)
+    for n, data in g.nodes(data=True):
+        data['geometry_wkt'] = dumps(vtds_simp.geometry.iloc[n], rounding_precision=0)
+
+    cois_simp = cois.copy()
+    if cois_simp.crs != vtds.crs:
+        cois_simp = cois_simp.to_crs(vtds.crs)
+    cois_simp.geometry = cois_simp.geometry.simplify(50)
+    cois_dict = {}
+    for idx, row in cois_simp.iterrows():
+        cois_dict[row['entry_ID']] = dumps(row.geometry, rounding_precision=0)
+    g.graph['cois_wkt'] = cois_dict
+    g.graph['crs'] = vtds.crs.to_string() if vtds.crs else None
 
     out_path = Path(f"co/data/co_{dist_level}_{coi_map_name}.json")
     g.to_json(out_path.as_posix())
