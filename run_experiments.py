@@ -1,20 +1,22 @@
 import os
 import time
 import multiprocessing
+import subprocess
+import json
 from pathlib import Path
-import papermill as pm
 
 ### init
 # run one or both
 TARGET_STATES = ["co"]
 STEPS = 250_000
+COI_MAP_NAME = "representable"  # to change what coi map we're looking at
 
 STATE_CONFIG = {
-    "mo": {"notebook": "mo/mo_scoring.ipynb", "state_name": "missouri"},
-    "co": {"notebook": "co/co_scoring.ipynb", "state_name": "colorado"},
+    "mo": {"state_name": "missouri"},
+    "co": {"state_name": "colorado"},
 }
 
-OBJECTIVES = ["tcp"]
+OBJECTIVES = ["tcp", "cs"]
 
 STRATEGIES = [
     "simple_12_5",
@@ -75,15 +77,7 @@ def get_surcharge_vals(surcharge_dict):
 
 
 def run_experiment(job):
-    # quiet warnings
-    devnull_fd = os.open(os.devnull, os.O_WRONLY)
-    os.dup2(devnull_fd, 1)  # mute stdout
-    os.dup2(devnull_fd, 2)  # mute stderr
-
-    # bypass plotly maps
-    os.environ["PAPERMILL_RUN"] = "True"
-
-    state, exp = job
+    position, state, exp = job
     config = STATE_CONFIG[state]
 
     objective = exp.get("objective", "tcp")
@@ -113,33 +107,43 @@ def run_experiment(job):
 
     csv_name = f"{config['state_name']}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
     csv_path = results_dir / f"{csv_name}.csv"
-    notebook_output = results_dir / f"{state}_{exp['accept']}_v{exp['run_id']}.ipynb"
     gallery_base = gallery_dir / csv_name
-    os.makedirs(gallery_dir, exist_ok=True)
+    gallery_base.mkdir(parents=True, exist_ok=True)
 
-    pm.execute_notebook(
-        config["notebook"],  # template
-        notebook_output.as_posix(),  # output
-        parameters=dict(
-            STATE_NAME=config["state_name"],
-            ACCEPT_STRATEGY_NAME=exp["accept"],
-            WEIGHTS_FILE=exp["weights"],
-            MARKOV_STEPS=exp["steps"],
-            DESIRED_TCP=exp["desired_tcp"],
-            CSV_FILENAME=csv_path.as_posix(),
-            GALLERY_DIR=gallery_base.as_posix(),
-            REGION_SURCHARGE=surcharge,
-            DIST_LEVEL="cog",
-        ),
-        cwd=state,
-        autosave_cell_every=0,  # save at end
-        progress_bar=False,
-    )
+    cmd = [
+        "python",
+        "run_chain.py",
+        "--state",
+        state,
+        "--dist_level",
+        "cog",
+        "--accept_strategy",
+        exp["accept"],
+        "--weights_file",
+        exp["weights"],
+        "--steps",
+        str(exp["steps"]),
+        "--desired_tcp",
+        str(exp["desired_tcp"]),
+        "--csv_filename",
+        csv_path.as_posix(),
+        "--gallery_dir",
+        gallery_base.as_posix(),
+        "--region_surcharge",
+        json.dumps(surcharge),
+        "--position",
+        str(position),
+        "--coi_map",
+        COI_MAP_NAME,
+    ]
+
+    subprocess.run(cmd)
 
 
 if __name__ == "__main__":
     # build all (state, experiment) jobs
-    jobs = [(state, exp) for state in TARGET_STATES for exp in experiments]
+    raw_jobs = [(state, exp) for state in TARGET_STATES for exp in experiments]
+    jobs = [(i, state, exp) for i, (state, exp) in enumerate(raw_jobs)]
     print(f"running {len(jobs)} experiments across {len(TARGET_STATES)} state(s)...")
 
     t_start = time.time()
