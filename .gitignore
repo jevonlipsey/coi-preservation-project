@@ -1,10 +1,21 @@
-# Ignore CSVs and results
+# Ignore heavy data
+*.shp
+*.shx
+*.dbf
+*.prj
+*.geojson
+*.cpg
+*.xml
 *.csv
 *.CSV
+
+# Ignore CSVs and results
 results/
 **/results/
 *.json
 *.JSON
+!weights/*.json
+!*/data/*.json
 **.jsonl.gz
 
 .DS_Store

@@ -5,7 +5,7 @@ from gerrychain import Graph
 from pathlib import Path
 
 ### config
-TARGET_STATES = ["co"]  # "mo", "co", or both
+TARGET_STATES = ["mo", "co"]  # "mo", "co", or both
 DIST_LEVELS = ["cog", "ss", "sh"]  # District levels for CO
 
 # COI Map Paths (relative to script location)
