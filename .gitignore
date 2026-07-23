@@ -1,15 +1,5 @@
-# Ignore heavy data
-*.shp
-*.shx
-*.dbf
-*.prj
-*.geojson
-*.cpg
-*.xml
 *.csv
 *.CSV
-*.sbn
-*.sbx
 
 # Ignore CSVs and results
 results/
