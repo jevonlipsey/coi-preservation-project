@@ -8,6 +8,8 @@
 *.xml
 *.csv
 *.CSV
+*.sbn
+*.sbx
 
 # Ignore CSVs and results
 results/
