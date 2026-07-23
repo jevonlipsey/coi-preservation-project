@@ -15,41 +15,39 @@ STATE_CONFIG = {
     "co": {"state_name": "colorado", "coi_map": "representable"},
 }
 
+COI_MAPS = ["representable"]
+DIST_LEVELS = ["cog", "ss", "sh"]
+
 OBJECTIVES = ["tcp", "cs"]
 
 STRATEGIES = [
-    "simple_12_5",
-    "simple_25",
     "simple_37_5",
-    "simple_50",
-    "neutral",
 ]
 
-# For CO: 'COUNTYFP20', 'entry_ID'. For MO: 'COUNTYFP20', 'cluster_id'
 SURCHARGES = [
-    {"COUNTYFP20": 0},
     {"COUNTYFP20": 0.55},
-    {"COUNTYFP20": 0.6},
-    {"COUNTYFP20": 0.65},
-    {"COUNTYFP20": 0.7},
 ]
 
 experiments = []
 for objective in OBJECTIVES:
     for surcharge_dict in SURCHARGES:
         for strategy in STRATEGIES:
-            for run_id in (1, 2):
-                experiments.append(
-                    {
-                        "accept": strategy,
-                        "run_id": run_id,
-                        "weights": "test_weights",
-                        "steps": STEPS,
-                        "desired_tcp": 0.85,
-                        "objective": objective,
-                        "region_surcharge": surcharge_dict,
-                    }
-                )
+            for dist_level in DIST_LEVELS:
+                for coi_map in COI_MAPS:
+                    for run_id in (1, 2):
+                        experiments.append(
+                            {
+                                "accept": strategy,
+                                "run_id": run_id,
+                                "weights": "test_weights",
+                                "steps": STEPS,
+                                "desired_tcp": 0.85,
+                                "objective": objective,
+                                "region_surcharge": surcharge_dict,
+                                "dist_level": dist_level,
+                                "coi_map": coi_map,
+                            }
+                        )
 
 
 ### run
@@ -81,6 +79,8 @@ def run_experiment(job):
 
     objective = exp.get("objective", "tcp")
     surcharge = exp.get("region_surcharge", {})
+    dist_level = exp.get("dist_level", "cog")
+    coi_map = exp.get("coi_map", config["coi_map"])
     county_val, coi_val = get_surcharge_vals(surcharge)
 
     results_dir = (
@@ -88,6 +88,8 @@ def run_experiment(job):
         / "analysis"
         / "results"
         / objective
+        / coi_map
+        / dist_level
         / f"county_{county_val}_coi_{coi_val}"
     )
     gallery_dir = (
@@ -95,6 +97,8 @@ def run_experiment(job):
         / "analysis"
         / "gallery"
         / objective
+        / coi_map
+        / dist_level
         / f"county_{county_val}_coi_{coi_val}"
     )
 
@@ -104,7 +108,7 @@ def run_experiment(job):
     # stagger runs
     time.sleep(exp["run_id"] * 2)
 
-    csv_name = f"{config['state_name']}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
+    csv_name = f"{config['state_name']}_{dist_level}_{coi_map}_{exp['accept']}_{exp['weights']}_{exp['steps']}_v{exp['run_id']}"
     csv_path = results_dir / f"{csv_name}.csv"
     gallery_base = gallery_dir / csv_name
     gallery_base.mkdir(parents=True, exist_ok=True)
@@ -115,7 +119,7 @@ def run_experiment(job):
         "--state",
         state,
         "--dist_level",
-        "cog",
+        dist_level,
         "--accept_strategy",
         exp["accept"],
         "--weights_file",
@@ -133,7 +137,7 @@ def run_experiment(job):
         "--position",
         str(position),
         "--coi_map",
-        config["coi_map"],
+        coi_map,
     ]
 
     subprocess.run(cmd)
