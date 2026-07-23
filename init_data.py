@@ -9,8 +9,13 @@ TARGET_STATES = ["mo", "co"]  # "mo", "co", or both
 DIST_LEVELS = ["cog", "ss", "sh"]  # District levels for CO
 
 # COI Map Paths (relative to script location)
-CO_COI_MAP_PATH = "co/data/Colorado_communities_labeled.geojson"
-MO_COI_MAP_PATH = "mo/data/mo_2021_coi/MO_20210924_phase_C_summary.shp"
+CO_COI_MAP_DIR = Path("co/data/coi_maps")
+CO_COI_MAP_PATH = CO_COI_MAP_DIR / "Colorado_communities_labeled.geojson"
+MO_COI_MAP_PATH = Path("mo/data/mo_2021_coi/MO_20210924_phase_C_summary.shp")
+
+# Directories for generated graph JSONs
+CO_COI_GRAPH_DIR = Path("co/data/coi_graphs")
+MO_COI_GRAPH_DIR = Path("mo/data")
 
 # Suffix for the output graph (e.g. co_cog_representable.json)
 CO_COI_MAP_NAME = "representable"
@@ -89,7 +94,10 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
 def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     print(f"Initializing CO ({dist_level}, coi_map: {coi_map_name})...")
     vtds = gpd.read_file(Path("co/data/census_vtds/co.shp"))
-    cois = gpd.read_file(Path(coi_map_path))
+    coi_map_path = Path(coi_map_path)
+    if not coi_map_path.exists():
+        coi_map_path = CO_COI_MAP_DIR / coi_map_path.name
+    cois = gpd.read_file(coi_map_path)
 
     if cois.crs != vtds.crs:
         vtds = vtds.to_crs(cois.crs)
@@ -144,7 +152,8 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     vtds.geometry = vtds.geometry.buffer(0)
     g = Graph.from_geodataframe(vtds)
 
-    out_path = Path(f"co/data/co_{dist_level}_{coi_map_name}.json")
+    CO_COI_GRAPH_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = CO_COI_GRAPH_DIR / f"co_{dist_level}_{coi_map_name}.json"
     g.to_json(out_path.as_posix())
     print(f"CO initialized and graph saved to {out_path}")
 

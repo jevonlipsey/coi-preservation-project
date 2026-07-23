@@ -30,9 +30,16 @@ def run_chain(
 ):
     # load graph
     graph_path = Path(state) / "data" / f"{state}_{dist_level}_{coi_map}.json"
+    if not graph_path.exists() and state == 'co':
+        graph_path = Path(state) / "data" / "coi_graphs" / f"{state}_{dist_level}_{coi_map}.json"
     if not graph_path.exists() and state == 'mo':
         # MO might not have dist_level in filename if we used mo_cog_graph
         graph_path = Path(state) / "data" / f"{state}_cog_{coi_map}.json"
+
+    if not graph_path.exists():
+        raise FileNotFoundError(
+            f"Graph file not found for state={state}, dist_level={dist_level}, coi_map={coi_map}: tried {graph_path}"
+        )
 
     g = Graph.from_json(graph_path.as_posix())
 
