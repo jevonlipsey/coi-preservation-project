@@ -13,7 +13,8 @@ CO_COI_MAP_PATH = "co/data/Colorado_communities_labeled.geojson"
 MO_COI_MAP_PATH = "mo/data/mo_2021_coi/MO_20210924_phase_C_summary.shp"
 
 # Suffix for the output graph (e.g. co_cog_representable.json)
-COI_MAP_NAME = "representable"
+CO_COI_MAP_NAME = "representable"
+MO_COI_MAP_NAME = "aggregated"
 
 
 def init_mo(coi_map_path, coi_map_name="aggregated"):
@@ -150,7 +151,7 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
 
 if __name__ == "__main__":
     if "mo" in TARGET_STATES:
-        init_mo(coi_map_path=MO_COI_MAP_PATH, coi_map_name=COI_MAP_NAME)
+        init_mo(coi_map_path=MO_COI_MAP_PATH, coi_map_name=MO_COI_MAP_NAME)
     if "co" in TARGET_STATES:
         for level in DIST_LEVELS:
-            init_co(coi_map_path=CO_COI_MAP_PATH, dist_level=level, coi_map_name=COI_MAP_NAME)
+            init_co(coi_map_path=CO_COI_MAP_PATH, dist_level=level, coi_map_name=CO_COI_MAP_NAME)

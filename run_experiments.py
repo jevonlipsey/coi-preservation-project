@@ -9,11 +9,10 @@ from pathlib import Path
 # run one or both
 TARGET_STATES = ["co"]
 STEPS = 250_000
-COI_MAP_NAME = "representable"  # to change what coi map we're looking at
 
 STATE_CONFIG = {
-    "mo": {"state_name": "missouri"},
-    "co": {"state_name": "colorado"},
+    "mo": {"state_name": "missouri", "coi_map": "aggregated"},
+    "co": {"state_name": "colorado", "coi_map": "representable"},
 }
 
 OBJECTIVES = ["tcp", "cs"]
@@ -134,7 +133,7 @@ def run_experiment(job):
         "--position",
         str(position),
         "--coi_map",
-        COI_MAP_NAME,
+        config["coi_map"],
     ]
 
     subprocess.run(cmd)
