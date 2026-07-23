@@ -148,7 +148,18 @@ if __name__ == "__main__":
     t_start = time.time()
 
     if len(jobs) > 1:
-        with multiprocessing.Pool(max(1, multiprocessing.cpu_count() - 1)) as pool:
+        # respect slurm cpu allocation if present, otherwise use machine cores minus one
+        slurm_cpus = os.environ.get("SLURM_CPUS_ON_NODE") or os.environ.get("SLURM_CPUS_PER_TASK")
+        if slurm_cpus:
+            num_workers = int(slurm_cpus)
+        else:
+            num_workers = max(1, multiprocessing.cpu_count() - 1)
+            
+        # never spawn more workers than we have jobs
+        num_workers = min(num_workers, len(jobs))
+        
+        print(f"using {num_workers} parallel workers...")
+        with multiprocessing.Pool(num_workers) as pool:
             pool.map(run_experiment, jobs)
     else:
         run_experiment(jobs[0])
