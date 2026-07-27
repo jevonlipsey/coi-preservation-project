@@ -16,9 +16,9 @@ STATE_CONFIG = {
 }
 
 COI_MAPS = ["representable"]
-DIST_LEVELS = ["cog", "ss", "sh"]
+DIST_LEVELS = ["cog"]
 
-OBJECTIVES = ["tcp", "cs"]
+OBJECTIVES = ["tcp"]
 
 STRATEGIES = [
     "simple_37_5",

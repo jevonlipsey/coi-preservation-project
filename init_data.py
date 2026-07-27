@@ -9,12 +9,12 @@ TARGET_STATES = ["mo", "co"]  # "mo", "co", or both
 DIST_LEVELS = ["cog", "ss", "sh"]  # District levels for CO
 
 # COI Map Paths (relative to script location)
-CO_COI_MAP_DIR = Path("co/data/coi_maps")
+CO_COI_MAP_DIR = Path("co/data/coi-maps")
 CO_COI_MAP_PATH = CO_COI_MAP_DIR / "Colorado_communities_labeled.geojson"
 MO_COI_MAP_PATH = Path("mo/data/mo_2021_coi/MO_20210924_phase_C_summary.shp")
 
 # Directories for generated graph JSONs
-CO_COI_GRAPH_DIR = Path("co/data/coi_graphs")
+CO_COI_GRAPH_DIR = Path("co/data/coi-graphs")
 MO_COI_GRAPH_DIR = Path("mo/data")
 
 # Suffix for the output graph (e.g. co_cog_representable.json)
@@ -130,15 +130,21 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
 
     if dist_level == "cog":
         dist_2021 = gpd.read_file(
-            Path("co/data/2021_Approved_Congressional_Plan_with_Final_Adjustments/2021_Approved_Congressional_Plan_with_Final_Adjustments/2021_Approved_Congressional_Plan_w_Final_Adjustments.shp")
+            Path(
+                "co/data/2021_Approved_Congressional_Plan_with_Final_Adjustments/2021_Approved_Congressional_Plan_with_Final_Adjustments/2021_Approved_Congressional_Plan_w_Final_Adjustments.shp"
+            )
         )
     elif dist_level == "ss":
         dist_2021 = gpd.read_file(
-            Path("co/data/2021_Approved_Senate_Plan_w_Final_Adjustments/2021_Approved_Senate_Plan_w_Final_Adjustments/2021_Approved_Senate_Plan_w_Final_Adjustments.shp")
+            Path(
+                "co/data/2021_Approved_Senate_Plan_w_Final_Adjustments/2021_Approved_Senate_Plan_w_Final_Adjustments/2021_Approved_Senate_Plan_w_Final_Adjustments.shp"
+            )
         )
     elif dist_level == "sh":
         dist_2021 = gpd.read_file(
-            Path("co/data/2021_Approved_House_Plan_w_Final_Adjustments/2021_Approved_House_Plan_w_Final_Adjustments/2021_Approved_House_Plan_w_Final_Adjustments.shp")
+            Path(
+                "co/data/2021_Approved_House_Plan_w_Final_Adjustments/2021_Approved_House_Plan_w_Final_Adjustments/2021_Approved_House_Plan_w_Final_Adjustments.shp"
+            )
         )
 
     dist_2021 = dist_2021.to_crs(vtds.crs)
@@ -163,4 +169,8 @@ if __name__ == "__main__":
         init_mo(coi_map_path=MO_COI_MAP_PATH, coi_map_name=MO_COI_MAP_NAME)
     if "co" in TARGET_STATES:
         for level in DIST_LEVELS:
-            init_co(coi_map_path=CO_COI_MAP_PATH, dist_level=level, coi_map_name=CO_COI_MAP_NAME)
+            init_co(
+                coi_map_path=CO_COI_MAP_PATH,
+                dist_level=level,
+                coi_map_name=CO_COI_MAP_NAME,
+            )

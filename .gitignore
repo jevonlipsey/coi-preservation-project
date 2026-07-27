@@ -1,6 +1,7 @@
 *.csv
 *.CSV
-
+!co/data/public-comments/agg_co_comments.csv
+!co/data/coi-graphs/*.json
 # Ignore CSVs and results
 results/
 **/results/
@@ -9,6 +10,7 @@ results/
 !weights/*.json
 !*/data/*.json
 **.jsonl.gz
+**.jsonl
 
 .DS_Store
 .localized
