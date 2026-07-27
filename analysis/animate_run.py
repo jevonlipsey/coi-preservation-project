@@ -13,15 +13,15 @@ from tqdm import tqdm
 
 # CONFIG
 STATE = "co"
-GALLERY_PATH = "analysis/gallery/tcp/representable/cog/county_55_coi_0/colorado_cog_representable_simple_37_5_test_weights_250000_v1"
+GALLERY_PATH = "analysis/gallery/tcp/people_based/cog/county_55_coi_0/colorado_cog_people_based_simple_37_5_test_weights_250000_v1"
 
-COI_MAP_PATH = "co/data/coi_maps/Colorado_communities_labeled.geojson"
-GRAPH_JSON_PATH = "co/data/co_cog_representable.json"
+COI_MAP_PATH = "co/data/coi-maps/people_based.geojson"
+GRAPH_JSON_PATH = "co/data/coi-graphs/co_cog_people_based.json"
 VTD_MAP_PATH = "co/data/census_vtds/co.shp"
 
 STEP_FREQ = 500
 FPS = 15
-OUTPUT_FILE = "representable_250k.mp4"
+OUTPUT_FILE = "people_based_250k.mp4"
 
 
 def get_base_and_diffs(gallery_path):
@@ -61,11 +61,11 @@ def main():
 
     ### universal coi id lookup to match init_data.py
     def get_coi_id(row):
-        for col in ["entry_ID", "cluster", "GEOID", "OBJECTID"]:
+        for col in ["entry_ID", "cluster", "GEOID", "OBJECTID", "id", "NAME"]:
             val = row.get(col)
-            if pd.notna(val) and str(val).strip() and str(val) not in ("None", "nan"):
+            if not pd.isna(val) and str(val).strip() and str(val) not in ("None", "nan"):
                 return str(val).strip()
-        return str(row.name)
+        return f"coi_{row.name}"
 
     cois["coi_id"] = cois.apply(get_coi_id, axis=1)
     coi_id_col = "coi_id"

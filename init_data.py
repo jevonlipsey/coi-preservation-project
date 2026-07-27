@@ -19,8 +19,11 @@ MO_COI_GRAPH_DIR = Path("mo/data")
 
 # coi maps to process for co
 CO_COI_MAPS = {
-    "people_based": "people_based.geojson",
-    "superclean": "superclean.geojson",
+    "all_maps": "all_maps.geojson",
+    "community": "community.geojson",
+    "economy": "economy.geojson",
+    "government_based": "government_based.geojson",
+    "mixed_fillers": "mixed_fillers.geojson",
 }
 MO_COI_MAP_NAME = "aggregated"
 
@@ -37,6 +40,16 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
     if cois.crs != vtds.crs:
         cois = cois.to_crs(vtds.crs)
 
+    def get_coi_id(row):
+        for col in ["entry_ID", "cluster", "GEOID", "OBJECTID", "id", "NAME"]:
+            val = row.get(col)
+            if not pd.isna(val) and str(val).strip() not in ("None", "nan", ""):
+                return str(val).strip()
+        return f"coi_{row.name}"
+
+    cois["community_id"] = cois.apply(get_coi_id, axis=1)
+    cois = cois[["community_id", "geometry"]].copy()
+
     vtds["TOTVOTES20"] = vtds["PRE20D"] + vtds["PRE20R"] + vtds["PRE20O"]
     vtds["vtd_area"] = vtds.geometry.area
 
@@ -50,10 +63,7 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
     coi_dict = {}
     for index, row in clean_overlaps.iterrows():
         vtd_name = row["NAME20"]
-        cluster_id = row.get("cluster")
-        if pd.isna(cluster_id) or not str(cluster_id).strip() or str(cluster_id) in ("None", "nan"):
-            cluster_id = row.get("GEOID", row.get("OBJECTID", str(index)))
-        cluster_id = str(cluster_id)
+        cluster_id = str(row["community_id"])
         population_chunk = row["coi_pop"]
 
         if vtd_name not in coi_dict:
@@ -108,6 +118,16 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     if cois.crs != vtds.crs:
         cois = cois.to_crs(vtds.crs)
 
+    def get_coi_id(row):
+        for col in ["entry_ID", "cluster", "GEOID", "OBJECTID", "id", "NAME"]:
+            val = row.get(col)
+            if not pd.isna(val) and str(val).strip() not in ("None", "nan", ""):
+                return str(val).strip()
+        return f"coi_{row.name}"
+
+    cois["community_id"] = cois.apply(get_coi_id, axis=1)
+    cois = cois[["community_id", "geometry"]].copy()
+
     vtds["TOTVOTES20"] = vtds["PRE20D"] + vtds["PRE20R"] + vtds["PRE20O"]
     vtds["vtd_area"] = vtds.geometry.area
 
@@ -121,10 +141,7 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     coi_dict = {}
     for index, row in clean_overlaps.iterrows():
         vtd_name = row["NAME20"]
-        cluster_id = row.get("entry_ID")
-        if pd.isna(cluster_id) or not str(cluster_id).strip() or str(cluster_id) in ("None", "nan"):
-            cluster_id = row.get("GEOID", row.get("OBJECTID", str(index)))
-        cluster_id = str(cluster_id)
+        cluster_id = str(row["community_id"])
         population_chunk = row["coi_pop"]
 
         if vtd_name not in coi_dict:

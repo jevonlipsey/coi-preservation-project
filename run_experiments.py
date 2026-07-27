@@ -6,48 +6,61 @@ import json
 from pathlib import Path
 
 ### init
-# run one or both
+# set target state and the single coi map to run on this machine
 TARGET_STATES = ["co"]
+COI_MAP = "community"  # 1 per pc (representable, community, people_based, superclean, economy, all_maps, government_based, mixed_fillers)
+
 STEPS = 250_000
+DIST_LEVELS = ["cog", "ss", "sh"]
+SEEDS = (1, 2)
 
 STATE_CONFIG = {
     "mo": {"state_name": "missouri", "coi_map": "aggregated"},
-    "co": {"state_name": "colorado", "coi_map": "representable"},
+    "co": {"state_name": "colorado", "coi_map": COI_MAP},
 }
 
-COI_MAPS = ["representable", "people_based", "superclean"]
-DIST_LEVELS = ["cog"]
-
-OBJECTIVES = ["tcp"]
-
-STRATEGIES = [
-    "simple_37_5",
-]
-
-SURCHARGES = [
-    {"COUNTYFP20": 0.55},
+# 6 experimental configurations per district level & seed (3 * 2 * 6 = 36 runs total)
+CONFIGS = [
+    # optimized tcp w/ 0.55 surcharge & 0 surcharge
+    {
+        "accept": "simple_37_5",
+        "objective": "tcp",
+        "region_surcharge": {"COUNTYFP20": 0.55},
+    },
+    {"accept": "simple_37_5", "objective": "tcp", "region_surcharge": {}},
+    # optimized cs w/ 0.55 surcharge & 0 surcharge
+    {
+        "accept": "simple_cs_37_5",
+        "objective": "cs",
+        "region_surcharge": {"COUNTYFP20": 0.55},
+    },
+    {"accept": "simple_cs_37_5", "objective": "cs", "region_surcharge": {}},
+    # neutral w/ 0.55 surcharge & 0 surcharge
+    {
+        "accept": "neutral",
+        "objective": "neutral",
+        "region_surcharge": {"COUNTYFP20": 0.55},
+    },
+    {"accept": "neutral", "objective": "neutral", "region_surcharge": {}},
 ]
 
 experiments = []
-for objective in OBJECTIVES:
-    for surcharge_dict in SURCHARGES:
-        for strategy in STRATEGIES:
-            for dist_level in DIST_LEVELS:
-                for coi_map in COI_MAPS:
-                    for run_id in (1, 2):
-                        experiments.append(
-                            {
-                                "accept": strategy,
-                                "run_id": run_id,
-                                "weights": "test_weights",
-                                "steps": STEPS,
-                                "desired_tcp": 0.85,
-                                "objective": objective,
-                                "region_surcharge": surcharge_dict,
-                                "dist_level": dist_level,
-                                "coi_map": coi_map,
-                            }
-                        )
+for dist_level in DIST_LEVELS:
+    for run_id in SEEDS:
+        for cfg in CONFIGS:
+            experiments.append(
+                {
+                    "accept": cfg["accept"],
+                    "run_id": run_id,
+                    "weights": "test_weights",
+                    "steps": STEPS,
+                    "desired_tcp": 0.85,
+                    "objective": cfg["objective"],
+                    "region_surcharge": cfg["region_surcharge"],
+                    "dist_level": dist_level,
+                    "coi_map": COI_MAP,
+                }
+            )
 
 
 ### run
@@ -80,7 +93,9 @@ def run_experiment(job):
     objective = exp.get("objective", "tcp")
     surcharge = exp.get("region_surcharge", {})
     dist_level = exp.get("dist_level", "cog")
-    coi_map = config["coi_map"] if state == "mo" else exp.get("coi_map", config["coi_map"])
+    coi_map = (
+        config["coi_map"] if state == "mo" else exp.get("coi_map", config["coi_map"])
+    )
     county_val, coi_val = get_surcharge_vals(surcharge)
 
     results_dir = (
@@ -149,7 +164,7 @@ if __name__ == "__main__":
         (state, exp)
         for state in TARGET_STATES
         for exp in experiments
-        if not (state == "mo" and exp["coi_map"] != COI_MAPS[0])
+        if not (state == "mo" and exp["coi_map"] != COI_MAP)
     ]
     jobs = [(i, state, exp) for i, (state, exp) in enumerate(raw_jobs)]
     print(f"running {len(jobs)} experiments across {len(TARGET_STATES)} state(s)...")

@@ -341,6 +341,18 @@ def optimized_cs_simple_25(partition):
     return accepted
 
 
+def optimized_cs_simple_37_5(partition):
+    current_score = partition["communities_split"]
+    previous_score = partition.parent["communities_split"] if partition.parent else 0
+
+    accepted = False
+    if current_score < previous_score:
+        accepted = True
+    else:
+        accepted = random.random() < 0.375
+    return accepted
+
+
 def optimized_cs_simple_50(partition):
     current_score = partition["communities_split"]
     previous_score = partition.parent["communities_split"] if partition.parent else 0
@@ -502,6 +514,7 @@ STRATEGIES = {
     "margin_cs_20_50": optimized_cs_margin_20_50,
     "margin_cs_30_60": optimized_cs_margin_30_60,
     "simple_cs_25": optimized_cs_simple_25,
+    "simple_cs_37_5": optimized_cs_simple_37_5,
     "simple_cs_50": optimized_cs_simple_50,
     "simple_cs_75": optimized_cs_simple_75,
 }
