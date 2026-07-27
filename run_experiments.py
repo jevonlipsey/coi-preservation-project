@@ -15,7 +15,7 @@ STATE_CONFIG = {
     "co": {"state_name": "colorado", "coi_map": "representable"},
 }
 
-COI_MAPS = ["representable"]
+COI_MAPS = ["representable", "people_based", "superclean"]
 DIST_LEVELS = ["cog"]
 
 OBJECTIVES = ["tcp"]
@@ -80,7 +80,7 @@ def run_experiment(job):
     objective = exp.get("objective", "tcp")
     surcharge = exp.get("region_surcharge", {})
     dist_level = exp.get("dist_level", "cog")
-    coi_map = exp.get("coi_map", config["coi_map"])
+    coi_map = config["coi_map"] if state == "mo" else exp.get("coi_map", config["coi_map"])
     county_val, coi_val = get_surcharge_vals(surcharge)
 
     results_dir = (
@@ -145,7 +145,12 @@ def run_experiment(job):
 
 if __name__ == "__main__":
     # build all (state, experiment) jobs
-    raw_jobs = [(state, exp) for state in TARGET_STATES for exp in experiments]
+    raw_jobs = [
+        (state, exp)
+        for state in TARGET_STATES
+        for exp in experiments
+        if not (state == "mo" and exp["coi_map"] != COI_MAPS[0])
+    ]
     jobs = [(i, state, exp) for i, (state, exp) in enumerate(raw_jobs)]
     print(f"running {len(jobs)} experiments across {len(TARGET_STATES)} state(s)...")
 

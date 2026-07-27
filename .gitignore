@@ -1,16 +1,20 @@
 *.csv
 *.CSV
 !co/data/public-comments/agg_co_comments.csv
-!co/data/coi-graphs/*.json
-# Ignore CSVs and results
-results/
-**/results/
+
+# Ignore random json / jsonl unless whitelisted
 *.json
 *.JSON
+*.jsonl
+*.jsonl.gz
 !weights/*.json
 !*/data/*.json
-**.jsonl.gz
-**.jsonl
+!co/data/coi-graphs/*.json
+!mo/data/coi-graphs/*.json
+!analysis/gallery/**
+!analysis/results/**
+# re-apply uncompressed jsonl ignore after gallery whitelist
+*.jsonl
 
 .DS_Store
 .localized

@@ -1,4 +1,5 @@
 import argparse
+import gzip
 import json
 import os
 import random
@@ -31,9 +32,11 @@ def run_chain(
     # load graph
     graph_path = Path(state) / "data" / f"{state}_{dist_level}_{coi_map}.json"
     if not graph_path.exists() and state == 'co':
-        graph_path = Path(state) / "data" / "coi_graphs" / f"{state}_{dist_level}_{coi_map}.json"
+        graph_path = Path(state) / "data" / "coi-graphs" / f"{state}_{dist_level}_{coi_map}.json"
+        if not graph_path.exists():
+            graph_path = Path(state) / "data" / "coi_graphs" / f"{state}_{dist_level}_{coi_map}.json"
     if not graph_path.exists() and state == 'mo':
-        # MO might not have dist_level in filename if we used mo_cog_graph
+        # mo might not have dist_level in filename if we used mo_cog_graph
         graph_path = Path(state) / "data" / f"{state}_cog_{coi_map}.json"
 
     if not graph_path.exists():
@@ -125,15 +128,16 @@ def run_chain(
     csv_path.parent.mkdir(parents=True, exist_ok=True)
 
     base_path = gallery_path / "base_assignment.json"
-    diffs_path = gallery_path / "diffs.jsonl"
+    diffs_path = gallery_path / "diffs.jsonl.gz"
+    legacy_diffs_path = gallery_path / "diffs.jsonl"
 
     # remove old files if exist
-    for p in [base_path, diffs_path, csv_path]:
+    for p in [base_path, diffs_path, legacy_diffs_path, csv_path]:
         if p.exists():
             p.unlink()
 
     prev_assignment = None
-    diffs_file = open(diffs_path, 'w')
+    diffs_file = gzip.open(diffs_path, 'wt', encoding='utf-8')
 
     chain_results = []
     chunk_size = 1000
@@ -144,7 +148,7 @@ def run_chain(
     for step, partition in enumerate(chain):
         is_accepted = 1 if (partition.parent is not None and partition is not partition.parent) else 0
 
-        # Collect metrics
+        # collect metrics
         metrics = scoring.collect_metrics(partition, [
             'weighted_tcp_score', 'unweighted_tcp_score', 'communities_split',
             'effective_splits', 'sr_entropy', 'shannon_entropy', 'even_splits',
@@ -172,23 +176,31 @@ def run_chain(
             
         chain_results.append(row)
 
-        # Handle diff storage
-        current_assignment = partition.assignment.to_dict()
+        # handle diff storage using compressed inverted lists {district: [node_ids]}
         if step == 0:
+            current_assignment = partition.assignment.to_dict()
             with open(base_path, 'w') as f:
                 json.dump(current_assignment, f)
+            prev_assignment = current_assignment.copy()
+        elif is_accepted:
+            current_assignment = partition.assignment.to_dict()
+            inv_diff = {}
+            for node, val in current_assignment.items():
+                if val != prev_assignment[node]:
+                    str_val = str(val)
+                    if str_val not in inv_diff:
+                        inv_diff[str_val] = []
+                    inv_diff[str_val].append(int(node))
+            for k in inv_diff:
+                inv_diff[k].sort()
+            diffs_file.write(json.dumps(inv_diff) + '\n')
+            prev_assignment = current_assignment.copy()
         else:
-            if is_accepted:
-                diff = {node: val for node, val in current_assignment.items() if val != prev_assignment[node]}
-                diffs_file.write(json.dumps(diff) + '\n')
-            else:
-                diffs_file.write('{}\n') # empty diff for rejected steps
-
-        prev_assignment = current_assignment.copy()
+            diffs_file.write('{}\n')  # empty diff for rejected steps
 
         pbar.update(1)
 
-        # flush CSV
+        # flush csv
         if (step + 1) % chunk_size == 0 or (step + 1) == steps:
             df = pd.DataFrame(chain_results)
             df.to_csv(csv_path, mode='a', header=not csv_path.exists(), index=False)

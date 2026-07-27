@@ -27,21 +27,28 @@ OUTPUT_FILE = "representable_250k.mp4"
 def get_base_and_diffs(gallery_path):
     p = pathlib.Path(gallery_path)
     if p.is_file() and p.suffix == ".gz":
-        with gzip.open(p, "rt") as f:
+        with gzip.open(p, "rt", encoding="utf-8") as f:
             lines = f.read().strip().split("\n")
             base = json.loads(lines[0])
             diffs = [json.loads(line) for line in lines[1:]]
             return base, diffs
     else:
         base_path = p / "base_assignment.json"
-        diffs_path = p / "diffs.jsonl"
-        with open(base_path, "r") as f:
+        with open(base_path, "r", encoding="utf-8") as f:
             base = json.load(f)
+
+        diffs_path = p / "diffs.jsonl.gz"
+        if not diffs_path.exists():
+            diffs_path = p / "diffs.jsonl"
+
         diffs = []
-        with open(diffs_path, "r") as f:
-            for line in f:
-                if line.strip():
-                    diffs.append(json.loads(line))
+        if diffs_path.exists():
+            opener = gzip.open if diffs_path.suffix == ".gz" else open
+            mode = "rt" if diffs_path.suffix == ".gz" else "r"
+            with opener(diffs_path, mode, encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        diffs.append(json.loads(line))
         return base, diffs
 
 
@@ -49,9 +56,19 @@ def main():
     print("Loading geographic data...")
     vtds = gpd.read_file(VTD_MAP_PATH)
     cois = gpd.read_file(COI_MAP_PATH)
-    cois = cois.to_crs(vtds.crs)
+    if cois.crs != vtds.crs:
+        cois = cois.to_crs(vtds.crs)
 
-    coi_id_col = "entry_ID" if "entry_ID" in cois.columns else "cluster"
+    ### universal coi id lookup to match init_data.py
+    def get_coi_id(row):
+        for col in ["entry_ID", "cluster", "GEOID", "OBJECTID"]:
+            val = row.get(col)
+            if pd.notna(val) and str(val).strip() and str(val) not in ("None", "nan"):
+                return str(val).strip()
+        return str(row.name)
+
+    cois["coi_id"] = cois.apply(get_coi_id, axis=1)
+    coi_id_col = "coi_id"
 
     print("Loading graph data...")
     with open(GRAPH_JSON_PATH, "r") as f:
@@ -97,8 +114,18 @@ def main():
     frame_idx = 0
     for step in tqdm(range(num_steps)):
         if step > 0:
-            for str_node_id, new_dist in diffs[step - 1].items():
-                current_assignment[str_node_id] = new_dist
+            for key, val in diffs[step - 1].items():
+                if isinstance(val, list):
+                    # inverted diff: key is district, val is list of node ids
+                    try:
+                        dist_val = int(key)
+                    except ValueError:
+                        dist_val = key
+                    for node in val:
+                        current_assignment[str(node)] = dist_val
+                else:
+                    # standard diff: key is node id, val is district
+                    current_assignment[key] = val
 
         if step in target_step_set:
             coi_dist_pops = {coi_id: {} for coi_id in coi_totals}

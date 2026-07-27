@@ -1,29 +1,32 @@
 import os
 import geopandas as gpd
+import pandas as pd
 import networkx as nx
 from gerrychain import Graph
 from pathlib import Path
 
 ### config
-TARGET_STATES = ["mo", "co"]  # "mo", "co", or both
-DIST_LEVELS = ["cog", "ss", "sh"]  # District levels for CO
+TARGET_STATES = ["co"]  # "mo", "co", or both
+DIST_LEVELS = ["cog", "ss", "sh"]  # district levels for co
 
-# COI Map Paths (relative to script location)
+# coi map paths (relative to script location)
 CO_COI_MAP_DIR = Path("co/data/coi-maps")
-CO_COI_MAP_PATH = CO_COI_MAP_DIR / "Colorado_communities_labeled.geojson"
 MO_COI_MAP_PATH = Path("mo/data/mo_2021_coi/MO_20210924_phase_C_summary.shp")
 
-# Directories for generated graph JSONs
+# directories for generated graph jsons
 CO_COI_GRAPH_DIR = Path("co/data/coi-graphs")
 MO_COI_GRAPH_DIR = Path("mo/data")
 
-# Suffix for the output graph (e.g. co_cog_representable.json)
-CO_COI_MAP_NAME = "representable"
+# coi maps to process for co
+CO_COI_MAPS = {
+    "people_based": "people_based.geojson",
+    "superclean": "superclean.geojson",
+}
 MO_COI_MAP_NAME = "aggregated"
 
 
 def init_mo(coi_map_path, coi_map_name="aggregated"):
-    print(f"Initializing MO (coi_map: {coi_map_name})...")
+    print(f"initializing mo (coi_map: {coi_map_name})...")
     vtds = gpd.read_file(Path("mo/data/mo-aggregated/mo.shp"))
     cois = gpd.read_file(Path(coi_map_path))
 
@@ -32,7 +35,7 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
     cois = cois[~cois["cluster"].isin(parents_to_drop)]
 
     if cois.crs != vtds.crs:
-        vtds = vtds.to_crs(cois.crs)
+        cois = cois.to_crs(vtds.crs)
 
     vtds["TOTVOTES20"] = vtds["PRE20D"] + vtds["PRE20R"] + vtds["PRE20O"]
     vtds["vtd_area"] = vtds.geometry.area
@@ -47,7 +50,10 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
     coi_dict = {}
     for index, row in clean_overlaps.iterrows():
         vtd_name = row["NAME20"]
-        cluster_id = row["cluster"]
+        cluster_id = row.get("cluster")
+        if pd.isna(cluster_id) or not str(cluster_id).strip() or str(cluster_id) in ("None", "nan"):
+            cluster_id = row.get("GEOID", row.get("OBJECTID", str(index)))
+        cluster_id = str(cluster_id)
         population_chunk = row["coi_pop"]
 
         if vtd_name not in coi_dict:
@@ -55,7 +61,7 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
 
         coi_dict[vtd_name][cluster_id] = {
             "pop": population_chunk,
-            "category": row.get("predicted_category", "coi"),
+            "category": "coi",
         }
 
     vtds["COI_POPS"] = [coi_dict.get(name, {}) for name in vtds["NAME20"]]
@@ -88,11 +94,11 @@ def init_mo(coi_map_path, coi_map_name="aggregated"):
 
     out_path = Path(f"mo/data/mo_cog_{coi_map_name}.json")
     g.to_json(out_path.as_posix())
-    print(f"MO initialized and graph saved to {out_path}")
+    print(f"mo initialized and graph saved to {out_path}")
 
 
 def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
-    print(f"Initializing CO ({dist_level}, coi_map: {coi_map_name})...")
+    print(f"initializing co ({dist_level}, coi_map: {coi_map_name})...")
     vtds = gpd.read_file(Path("co/data/census_vtds/co.shp"))
     coi_map_path = Path(coi_map_path)
     if not coi_map_path.exists():
@@ -100,7 +106,7 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     cois = gpd.read_file(coi_map_path)
 
     if cois.crs != vtds.crs:
-        vtds = vtds.to_crs(cois.crs)
+        cois = cois.to_crs(vtds.crs)
 
     vtds["TOTVOTES20"] = vtds["PRE20D"] + vtds["PRE20R"] + vtds["PRE20O"]
     vtds["vtd_area"] = vtds.geometry.area
@@ -115,7 +121,10 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     coi_dict = {}
     for index, row in clean_overlaps.iterrows():
         vtd_name = row["NAME20"]
-        cluster_id = row["entry_ID"]
+        cluster_id = row.get("entry_ID")
+        if pd.isna(cluster_id) or not str(cluster_id).strip() or str(cluster_id) in ("None", "nan"):
+            cluster_id = row.get("GEOID", row.get("OBJECTID", str(index)))
+        cluster_id = str(cluster_id)
         population_chunk = row["coi_pop"]
 
         if vtd_name not in coi_dict:
@@ -123,7 +132,7 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
 
         coi_dict[vtd_name][cluster_id] = {
             "pop": population_chunk,
-            "category": row.get("predicted_category", "coi"),
+            "category": "coi",
         }
 
     vtds["COI_POPS"] = [coi_dict.get(name, {}) for name in vtds["NAME20"]]
@@ -161,7 +170,7 @@ def init_co(coi_map_path, dist_level="cog", coi_map_name="graph"):
     CO_COI_GRAPH_DIR.mkdir(parents=True, exist_ok=True)
     out_path = CO_COI_GRAPH_DIR / f"co_{dist_level}_{coi_map_name}.json"
     g.to_json(out_path.as_posix())
-    print(f"CO initialized and graph saved to {out_path}")
+    print(f"co initialized and graph saved to {out_path}")
 
 
 if __name__ == "__main__":
@@ -169,8 +178,9 @@ if __name__ == "__main__":
         init_mo(coi_map_path=MO_COI_MAP_PATH, coi_map_name=MO_COI_MAP_NAME)
     if "co" in TARGET_STATES:
         for level in DIST_LEVELS:
-            init_co(
-                coi_map_path=CO_COI_MAP_PATH,
-                dist_level=level,
-                coi_map_name=CO_COI_MAP_NAME,
-            )
+            for map_name, filename in CO_COI_MAPS.items():
+                init_co(
+                    coi_map_path=CO_COI_MAP_DIR / filename,
+                    dist_level=level,
+                    coi_map_name=map_name,
+                )
