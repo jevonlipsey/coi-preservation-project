@@ -74,6 +74,14 @@ def run_chain(
     gallery_path.mkdir(parents=True, exist_ok=True)
     csv_path.parent.mkdir(parents=True, exist_ok=True)
 
+    surcharge_label = gallery_path.parent.name if "county_" in gallery_path.parent.name else "no_surcharge"
+    short_surcharge = surcharge_label.replace("county_", "").replace("_coi_", "/")
+    parts = csv_path.stem.split("_")
+    seed_label = parts[-1] if parts and parts[-1].startswith("v") and parts[-1][1:].isdigit() else "v1"
+
+    desc_str = f"{dist_level:<3} {accept_strategy:<15} {short_surcharge:<4} {seed_label:<2}"
+    log_prefix = f"[{coi_map} | {dist_level} | {accept_strategy} | {surcharge_label} | {seed_label}]"
+
     base_path = gallery_path / "base_assignment.json"
     diffs_path = gallery_path / "diffs.jsonl.gz"
     legacy_diffs_path = gallery_path / "diffs.jsonl"
@@ -87,56 +95,82 @@ def run_chain(
             with open(csv_path, "r", encoding="utf-8") as f:
                 num_lines = sum(1 for line in f if line.strip())
             completed_steps = max(0, num_lines - 1)
-            
+
             if completed_steps >= steps:
-                print(f"Run already completed ({completed_steps}/{steps} steps). Skipping {state} {accept_strategy} ({coi_map}).")
+                print(f"{log_prefix} Run already completed ({completed_steps:,}/{steps:,} steps). Skipping.")
                 return
-            
+
             if completed_steps > 0:
                 with open(base_path, "r", encoding="utf-8") as f:
                     loaded_base = json.load(f)
-                
+
                 node_key_type = type(next(iter(g.nodes())))
                 reconstructed_assignment = {node_key_type(k): v for k, v in loaded_base.items()}
-                
+
                 diffs_target_count = completed_steps - 1
-                
+
                 if diffs_target_count > 0:
                     target_diffs = diffs_path if diffs_path.exists() else (legacy_diffs_path if legacy_diffs_path.exists() else None)
                     if target_diffs is None:
-                        print(f"Warning: Diffs missing for resuming {completed_steps} steps. Starting fresh.")
+                        print(f"{log_prefix} Warning: Diffs missing for resuming {completed_steps:,} steps. Starting fresh.")
                         start_step = 0
                     else:
                         opener = gzip.open if target_diffs.suffix == '.gz' else open
                         mode = 'rt' if target_diffs.suffix == '.gz' else 'r'
-                        with opener(target_diffs, mode, encoding='utf-8') as f:
-                            for idx, line in enumerate(f):
-                                if idx < diffs_target_count:
-                                    clean_diff_lines.append(line.rstrip('\r\n') + '\n')
-                                    diff_dict = json.loads(line.strip())
-                                    for k, v in diff_dict.items():
-                                        if isinstance(v, list):
-                                            try:
-                                                dist_val = int(k)
-                                            except ValueError:
-                                                dist_val = k
-                                            for node in v:
-                                                reconstructed_assignment[node_key_type(node)] = dist_val
-                                        else:
-                                            reconstructed_assignment[node_key_type(k)] = v
-                                else:
-                                    break
+                        try:
+                            with opener(target_diffs, mode, encoding='utf-8') as f:
+                                for idx, line in enumerate(f):
+                                    if idx < diffs_target_count:
+                                        clean_diff_lines.append(line.rstrip('\r\n') + '\n')
+                                        diff_dict = json.loads(line.strip())
+                                        for k, v in diff_dict.items():
+                                            if isinstance(v, list):
+                                                try:
+                                                    dist_val = int(k)
+                                                except ValueError:
+                                                    dist_val = k
+                                                for node in v:
+                                                    reconstructed_assignment[node_key_type(node)] = dist_val
+                                            else:
+                                                reconstructed_assignment[node_key_type(k)] = v
+                                    else:
+                                        break
+                        except Exception as stream_err:
+                            # catch EOFError, zlib.error, JSONDecodeError from abrupt system crash mid-write
+                            pass
+
                         if len(clean_diff_lines) < diffs_target_count:
-                            print(f"Warning: Found only {len(clean_diff_lines)} diffs (expected {diffs_target_count}). Starting fresh.")
-                            start_step = 0
-                            reconstructed_assignment = None
-                            clean_diff_lines = []
+                            if len(clean_diff_lines) > 0:
+                                recovered_steps = len(clean_diff_lines) + 1
+                                print(f"{log_prefix} Recovered {recovered_steps:,} steps before truncated gzip stream cut-off. Resynchronizing CSV...")
+                                try:
+                                    with open(csv_path, "r", encoding="utf-8") as f:
+                                        valid_rows = [next(f)]  # header
+                                        for _ in range(recovered_steps):
+                                            valid_rows.append(next(f))
+                                    with open(csv_path, "w", encoding="utf-8") as f:
+                                        f.writelines(valid_rows)
+                                    start_step = recovered_steps
+                                except Exception as sync_err:
+                                    print(f"{log_prefix} Warning: Could not resync CSV ({sync_err}). Starting fresh.")
+                                    start_step = 0
+                                    reconstructed_assignment = None
+                                    clean_diff_lines = []
+                            else:
+                                print(f"{log_prefix} Warning: Found 0 diffs (expected {diffs_target_count:,}). Starting fresh.")
+                                start_step = 0
+                                reconstructed_assignment = None
+                                clean_diff_lines = []
                         else:
                             start_step = completed_steps
                 else:
                     start_step = completed_steps
+
+                if start_step > 0:
+                    pct = (start_step / steps) * 100 if steps > 0 else 0
+                    print(f"{log_prefix} Resuming from checkpoint at step {start_step:,}/{steps:,} ({pct:.1f}%)...")
         except Exception as e:
-            print(f"Warning: Could not resume from checkpoint ({e}). Starting fresh.")
+            print(f"{log_prefix} Warning: Could not resume from checkpoint ({e}). Starting fresh.")
             start_step = 0
             reconstructed_assignment = None
             clean_diff_lines = []
@@ -219,7 +253,7 @@ def run_chain(
     chunk_size = 1000
     num_districts = len(initial_partition.parts)
 
-    pbar = tqdm(total=steps, initial=start_step, position=position, desc=f"{state} {accept_strategy}", leave=True)
+    pbar = tqdm(total=steps, initial=start_step, position=position, desc=desc_str, leave=True)
 
     for partition in chain:
         if start_step > 0 and current_step_num < start_step:
