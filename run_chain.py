@@ -68,13 +68,92 @@ def run_chain(
     total_population = sum(node.get('TOTPOP', 1) for node in g.nodes.values())
     target_pop = total_population / dist_parts
 
-    starting_assignment = recursive_tree_part(
-        g, 
-        parts=range(dist_parts), 
-        pop_target=target_pop, 
-        pop_col="TOTPOP", 
-        epsilon=0.05
-    )
+    csv_path = Path(csv_filename)
+    gallery_path = Path(gallery_dir)
+
+    gallery_path.mkdir(parents=True, exist_ok=True)
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+
+    base_path = gallery_path / "base_assignment.json"
+    diffs_path = gallery_path / "diffs.jsonl.gz"
+    legacy_diffs_path = gallery_path / "diffs.jsonl"
+
+    start_step = 0
+    clean_diff_lines = []
+    reconstructed_assignment = None
+
+    if csv_path.exists() and base_path.exists():
+        try:
+            with open(csv_path, "r", encoding="utf-8") as f:
+                num_lines = sum(1 for line in f if line.strip())
+            completed_steps = max(0, num_lines - 1)
+            
+            if completed_steps >= steps:
+                print(f"Run already completed ({completed_steps}/{steps} steps). Skipping {state} {accept_strategy} ({coi_map}).")
+                return
+            
+            if completed_steps > 0:
+                with open(base_path, "r", encoding="utf-8") as f:
+                    loaded_base = json.load(f)
+                
+                node_key_type = type(next(iter(g.nodes())))
+                reconstructed_assignment = {node_key_type(k): v for k, v in loaded_base.items()}
+                
+                diffs_target_count = completed_steps - 1
+                
+                if diffs_target_count > 0:
+                    target_diffs = diffs_path if diffs_path.exists() else (legacy_diffs_path if legacy_diffs_path.exists() else None)
+                    if target_diffs is None:
+                        print(f"Warning: Diffs missing for resuming {completed_steps} steps. Starting fresh.")
+                        start_step = 0
+                    else:
+                        opener = gzip.open if target_diffs.suffix == '.gz' else open
+                        mode = 'rt' if target_diffs.suffix == '.gz' else 'r'
+                        with opener(target_diffs, mode, encoding='utf-8') as f:
+                            for idx, line in enumerate(f):
+                                if idx < diffs_target_count:
+                                    clean_diff_lines.append(line.rstrip('\r\n') + '\n')
+                                    diff_dict = json.loads(line.strip())
+                                    for k, v in diff_dict.items():
+                                        if isinstance(v, list):
+                                            try:
+                                                dist_val = int(k)
+                                            except ValueError:
+                                                dist_val = k
+                                            for node in v:
+                                                reconstructed_assignment[node_key_type(node)] = dist_val
+                                        else:
+                                            reconstructed_assignment[node_key_type(k)] = v
+                                else:
+                                    break
+                        if len(clean_diff_lines) < diffs_target_count:
+                            print(f"Warning: Found only {len(clean_diff_lines)} diffs (expected {diffs_target_count}). Starting fresh.")
+                            start_step = 0
+                            reconstructed_assignment = None
+                            clean_diff_lines = []
+                        else:
+                            start_step = completed_steps
+                else:
+                    start_step = completed_steps
+        except Exception as e:
+            print(f"Warning: Could not resume from checkpoint ({e}). Starting fresh.")
+            start_step = 0
+            reconstructed_assignment = None
+            clean_diff_lines = []
+
+    if start_step == 0:
+        for p in [base_path, diffs_path, legacy_diffs_path, csv_path]:
+            if p.exists():
+                p.unlink()
+        starting_assignment = recursive_tree_part(
+            g, 
+            parts=range(dist_parts), 
+            pop_target=target_pop, 
+            pop_col="TOTPOP", 
+            epsilon=0.05
+        )
+    else:
+        starting_assignment = reconstructed_assignment
 
     updaters_dict = { 
         '_coi_state': scoring.coi_district_pops,
@@ -113,39 +192,42 @@ def run_chain(
 
     accept_function = acceptance.STRATEGIES.get(accept_strategy, always_accept)
 
+    if start_step > 0:
+        total_chain_steps = steps - start_step + 1
+        current_step_num = start_step - 1
+    else:
+        total_chain_steps = steps
+        current_step_num = 0
+
     chain = MarkovChain(
         proposal=proposal,
         constraints=[],
         accept=accept_function,
         initial_state=initial_partition,
-        total_steps=steps
+        total_steps=total_chain_steps
     )
-
-    csv_path = Path(csv_filename)
-    gallery_path = Path(gallery_dir)
-
-    gallery_path.mkdir(parents=True, exist_ok=True)
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
-
-    base_path = gallery_path / "base_assignment.json"
-    diffs_path = gallery_path / "diffs.jsonl.gz"
-    legacy_diffs_path = gallery_path / "diffs.jsonl"
-
-    # remove old files if exist
-    for p in [base_path, diffs_path, legacy_diffs_path, csv_path]:
-        if p.exists():
-            p.unlink()
 
     prev_assignment = None
     diffs_file = gzip.open(diffs_path, 'wt', encoding='utf-8')
+    if start_step > 0:
+        if clean_diff_lines:
+            for line in clean_diff_lines:
+                diffs_file.write(line)
+        del clean_diff_lines
 
     chain_results = []
     chunk_size = 1000
     num_districts = len(initial_partition.parts)
 
-    pbar = tqdm(total=steps, position=position, desc=f"{state} {accept_strategy}", leave=True)
+    pbar = tqdm(total=steps, initial=start_step, position=position, desc=f"{state} {accept_strategy}", leave=True)
 
-    for step, partition in enumerate(chain):
+    for partition in chain:
+        if start_step > 0 and current_step_num < start_step:
+            prev_assignment = partition.assignment.to_dict()
+            current_step_num += 1
+            continue
+
+        step = current_step_num
         is_accepted = 1 if (partition.parent is not None and partition is not partition.parent) else 0
 
         # collect metrics
@@ -205,6 +287,13 @@ def run_chain(
             df = pd.DataFrame(chain_results)
             df.to_csv(csv_path, mode='a', header=not csv_path.exists(), index=False)
             chain_results = []
+
+        # break linked-list memory retention to prevent memory accumulation & gc thrashing over long runs
+        if partition.parent is not None and partition.parent is not partition:
+            if partition.parent.parent is not None and partition.parent.parent is not partition.parent:
+                partition.parent.parent = None
+
+        current_step_num += 1
 
     diffs_file.close()
     pbar.close()
